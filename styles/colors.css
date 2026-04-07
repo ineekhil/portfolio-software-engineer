@@ -1,0 +1,78 @@
+/* =============================================================================
+   Design tokens — all color values live here. Import via app/globals.css.
+   ============================================================================= */
+
+:root {
+  /* Surfaces */
+  --background: #fafafa;
+  --foreground: #0a0a0a;
+  --muted: #737373;
+  --border: #e5e5e5;
+  --surface-muted: #f4f4f5;
+  --surface-elevated: #e4e4e7;
+
+  /* Brand / accent */
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-active: #3730a3;
+  --ring: #4f46e5;
+
+  /* Icon buttons: light = yellow fill; dark = yellow border only (no fill) */
+  --icon-hover-bg: #fff1a2;
+  --icon-hover-border: transparent;
+
+  /* Header social — light hover fill */
+  --social-light-hover-bg-email: #57595B;
+  --social-light-hover-bg-whatsapp: #79ae6f;
+  --social-light-hover-bg-instagram: #c44a3a;
+  --social-light-hover-bg-linkedin: #5eabd6;
+  --social-light-hover-bg-github: #24292f;
+  --social-light-hover-bg-x: #000000;
+  --social-light-hover-bg-product-hunt: #fff1a2;
+
+  /* Header social — dark hover border (unused in light) */
+  --social-hover-border-email: transparent;
+  --social-hover-border-whatsapp: transparent;
+  --social-hover-border-instagram: transparent;
+  --social-hover-border-linkedin: transparent;
+  --social-hover-border-github: transparent;
+  --social-hover-border-x: transparent;
+  --social-hover-border-product-hunt: transparent;
+
+  /* Villain section decorative blobs (behind content) */
+  --villain-glow-primary: color-mix(in srgb, var(--accent) 20%, transparent);
+  --villain-glow-secondary: rgb(139 92 246 / 0.15);
+
+  /* Browser chrome / PWA theme (match --background) */
+  --meta-theme-color: #fafafa;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --muted: #a3a3a3;
+  --border: #27272a;
+  --surface-muted: #18181b;
+  --surface-elevated: #27272a;
+  --accent: #818cf8;
+  --accent-hover: #a5b4fc;
+  --accent-active: #6366f1;
+  --ring: #818cf8;
+
+  --icon-hover-bg: transparent;
+  --icon-hover-border: #fff1a2;
+
+  /* Header social — per-network dark hover border */
+  --social-hover-border-email: #57595B;
+  --social-hover-border-whatsapp: #238636;
+  --social-hover-border-instagram: #c44a3a;
+  --social-hover-border-linkedin: #5eabd6;
+  --social-hover-border-github: #ffffff;
+  --social-hover-border-x: #574964;
+  --social-hover-border-product-hunt: #fff1a2;
+
+  --villain-glow-primary: color-mix(in srgb, var(--accent) 20%, transparent);
+  --villain-glow-secondary: rgb(167 139 250 / 0.1);
+
+  --meta-theme-color: #0a0a0a;
+}
