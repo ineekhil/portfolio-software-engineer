@@ -14,7 +14,7 @@ export function PinterestGallery() {
         by God&apos;s grace.
       </p>
       <p className="text-muted mb-10 text-center text-xs sm:text-sm">
-        #spread-happiness
+        #spread-love-&-happiness
       </p>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-5">
         {WHITE_PLACE_CARDS.map((card, index) => (
