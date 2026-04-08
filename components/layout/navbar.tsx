@@ -116,6 +116,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
+            <HeaderDecorIcons onNavigate={() => setOpen(false)} />
             <ThemeToggle className="shrink-0 rounded-full" />
             <IconTooltip
               label={open ? "Close menu" : "Open menu"}
@@ -172,9 +173,8 @@ export function Navbar() {
               })}
             </nav>
             <HeaderSearch className="max-w-none" />
-            <div className="flex flex-wrap items-center gap-2">
-              <HeaderSocial className="self-start" />
-              <HeaderDecorIcons onNavigate={() => setOpen(false)} />
+            <div className="flex justify-center pt-1">
+              <HeaderSocial />
             </div>
           </Container>
         </div>
