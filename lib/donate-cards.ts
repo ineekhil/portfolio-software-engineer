@@ -1,7 +1,7 @@
 /** https://www.grow-trees.com/ — plant trees online. */
 export const GROW_TREES_URL = "https://www.grow-trees.com/" as const;
 
-export type WhitePlaceCard = {
+export type DonateCard = {
   id: string;
   title: string;
   imageSrc: string;
@@ -10,7 +10,7 @@ export type WhitePlaceCard = {
 };
 
 /** Three tree-themed cards; each opens Grow-Trees in a new tab. */
-export const WHITE_PLACE_CARDS: WhitePlaceCard[] = [
+export const DONATE_CARDS: DonateCard[] = [
   {
     id: "1",
     title: "Plant a tree",

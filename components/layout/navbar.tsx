@@ -36,16 +36,21 @@ function HeaderDecorIcons({
   className?: string;
   onNavigate?: () => void;
 }) {
+  const pathname = usePathname();
+  const active = pathname === "/donate";
+
   return (
     <IconTooltip label="#spread-happiness 😍" side="bottom" preserveCase>
       <Link
-        href="/white-place"
+        href="/donate"
         onClick={onNavigate}
         className={cn(
           "inline-flex shrink-0 text-red-500 transition-opacity hover:opacity-80",
           className,
+          active &&
+            "rounded-full outline-dotted outline-2 outline-offset-2 outline-accent",
         )}
-        aria-label="Spread happiness — open white place"
+        aria-label="Spread happiness — open donate page"
       >
         <Heart className="size-6" weight="fill" aria-hidden />
       </Link>

@@ -20,9 +20,6 @@ export const SITE_DESCRIPTION =
 export const VILLAIN_PROFILE_IMAGE_URL =
   "https://media.licdn.com/dms/image/v2/D4D03AQG3LcaATal0gg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718894767709?e=1776902400&v=beta&t=RXbI8FusAUU71Y-9lMrAvdYq6BonY--y93-F8n7zamE";
 
-/** Shown in a tooltip when hovering the villain profile photo. */
-export const VILLAIN_PROFILE_HOVER_MESSAGE = "hey! how are you? 😅";
-
 /** Shown when the header search is focused — click runs a search with `query`. */
 export const SEARCH_HINTS: { label: string; query: string }[] = [
   { label: "recently company…", query: "recently company" },

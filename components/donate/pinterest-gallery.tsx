@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { GROW_TREES_URL, WHITE_PLACE_CARDS } from "@/lib/white-place-cards";
+import { GROW_TREES_URL, DONATE_CARDS } from "@/lib/donate-cards";
 import { cn } from "@/lib/utils";
 
 export function PinterestGallery() {
@@ -17,7 +17,7 @@ export function PinterestGallery() {
         #spread-love-&-happiness
       </p>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-5">
-        {WHITE_PLACE_CARDS.map((card, index) => (
+        {DONATE_CARDS.map((card, index) => (
           <Link
             key={card.id}
             href={GROW_TREES_URL}
