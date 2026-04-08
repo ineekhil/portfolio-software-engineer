@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { SmileyDoodleBackground } from "@/components/white-place/smiley-doodle-background";
-import { PinterestGallery } from "@/components/white-place/pinterest-gallery";
+import { SmileyDoodleBackground } from "@/components/donate/smiley-doodle-background";
+import { PinterestGallery } from "@/components/donate/pinterest-gallery";
 
 export const metadata: Metadata = {
   title: "White place",

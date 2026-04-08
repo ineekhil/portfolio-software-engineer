@@ -20,9 +20,6 @@ export const SITE_DESCRIPTION =
 export const VILLAIN_PROFILE_IMAGE_URL =
   "https://media.licdn.com/dms/image/v2/D4D03AQG3LcaATal0gg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718894767709?e=1776902400&v=beta&t=RXbI8FusAUU71Y-9lMrAvdYq6BonY--y93-F8n7zamE";
 
-/** Shown in a tooltip when hovering the villain profile photo. */
-export const VILLAIN_PROFILE_HOVER_MESSAGE = "hey! how are you? 😅";
-
 /** Shown when the header search is focused — click runs a search with `query`. */
 export const SEARCH_HINTS: { label: string; query: string }[] = [
   { label: "recently company…", query: "recently company" },
@@ -30,12 +27,21 @@ export const SEARCH_HINTS: { label: string; query: string }[] = [
   { label: "skills…", query: "skills" },
 ];
 
+export const RESUME_DOWNLOAD_FILENAME = "Avinash_Sharma_CV.pdf" as const;
+
+export const RESUME_DOWNLOAD_HREF =
+  `/${RESUME_DOWNLOAD_FILENAME}` as const;
+
 export const NAV_ITEMS: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/skills", label: "Skills" },
+  { href: "/experience", label: "Experience" },
   { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  { href: RESUME_DOWNLOAD_HREF, label: "Resume" },
 ];
+
+/** Public read.cv (or other) profile — used on the Resume page. Replace with your URL. */
+export const READ_CV_PROFILE_URL = "https://read.cv/";
 
 /** Icon strip in the site header (labels map to icons in `HeaderSocial`). */
 export const HEADER_SOCIAL_LINKS: SocialLink[] = [

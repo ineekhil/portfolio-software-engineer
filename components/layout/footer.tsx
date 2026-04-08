@@ -39,7 +39,7 @@ export function Footer() {
 
   return (
     <footer className="border-border border-t">
-      <Container className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+      <Container className="flex flex-col items-center gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-muted text-sm">
           © {year} {COPYRIGHT_HOLDER} | Made in India <IndiaFlagMicro /> 💛
         </p>
