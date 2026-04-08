@@ -27,12 +27,21 @@ export const SEARCH_HINTS: { label: string; query: string }[] = [
   { label: "skills…", query: "skills" },
 ];
 
+export const RESUME_DOWNLOAD_FILENAME = "Avinash_Sharma_CV.pdf" as const;
+
+export const RESUME_DOWNLOAD_HREF =
+  `/${RESUME_DOWNLOAD_FILENAME}` as const;
+
 export const NAV_ITEMS: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/skills", label: "Skills" },
+  { href: "/experience", label: "Experience" },
   { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  { href: RESUME_DOWNLOAD_HREF, label: "Resume" },
 ];
+
+/** Public read.cv (or other) profile — used on the Resume page. Replace with your URL. */
+export const READ_CV_PROFILE_URL = "https://read.cv/";
 
 /** Icon strip in the site header (labels map to icons in `HeaderSocial`). */
 export const HEADER_SOCIAL_LINKS: SocialLink[] = [

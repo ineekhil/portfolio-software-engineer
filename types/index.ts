@@ -1,6 +1,8 @@
 export type NavItem = {
   href: string;
   label: string;
+  /** Open in a new tab (e.g. external resume link). */
+  external?: boolean;
 };
 
 export type Project = {
