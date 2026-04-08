@@ -3,9 +3,11 @@
 import { ArrowRight, Sparkle } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { cn } from "@/lib/utils";
 import {
   CONTACT_EMAIL,
   SITE_BIO,
@@ -15,7 +17,81 @@ import {
   VILLAIN_PROFILE_IMAGE_URL,
 } from "@/lib/constants";
 
+const MD_MAX_PX = 767;
+
 export function Villain() {
+  const titleBioRef = useRef<HTMLDivElement>(null);
+  const [showMobilePhotoHint, setShowMobilePhotoHint] = useState(false);
+  const mobileHintTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const wasTitleBioInViewRef = useRef(false);
+
+  useEffect(() => {
+    const target = titleBioRef.current;
+    if (!target) return;
+
+    const clearMobileTimer = () => {
+      if (mobileHintTimerRef.current) {
+        clearTimeout(mobileHintTimerRef.current);
+        mobileHintTimerRef.current = null;
+      }
+    };
+
+    const mq = window.matchMedia(`(max-width: ${MD_MAX_PX}px)`);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const e = entries[0];
+        if (!e) return;
+
+        if (!mq.matches) {
+          clearMobileTimer();
+          wasTitleBioInViewRef.current = false;
+          setShowMobilePhotoHint(false);
+          return;
+        }
+
+        const inView =
+          e.isIntersecting &&
+          e.intersectionRect.height > 0 &&
+          e.intersectionRatio >= 0.2;
+
+        if (inView) {
+          if (!wasTitleBioInViewRef.current) {
+            wasTitleBioInViewRef.current = true;
+            clearMobileTimer();
+            mobileHintTimerRef.current = setTimeout(() => {
+              setShowMobilePhotoHint(true);
+              mobileHintTimerRef.current = null;
+            }, 1000);
+          }
+        } else {
+          wasTitleBioInViewRef.current = false;
+          clearMobileTimer();
+          setShowMobilePhotoHint(false);
+        }
+      },
+      { threshold: [0, 0.2, 0.35, 0.5] },
+    );
+
+    observer.observe(target);
+
+    const onMqChange = () => {
+      if (!mq.matches) {
+        clearMobileTimer();
+        wasTitleBioInViewRef.current = false;
+        setShowMobilePhotoHint(false);
+      }
+    };
+
+    mq.addEventListener("change", onMqChange);
+
+    return () => {
+      clearMobileTimer();
+      mq.removeEventListener("change", onMqChange);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <section className="border-border relative overflow-visible border-b bg-gradient-to-b from-surface-muted/35 via-background/55 to-background/80 pt-16 pb-20 sm:pt-20 sm:pb-28 lg:pt-28 lg:pb-32">
       <div
@@ -48,8 +124,15 @@ export function Villain() {
                   </div>
                 </div>
                 <span
-                  className="border-border bg-background/95 text-foreground pointer-events-none absolute top-0 left-full z-10 ml-1 -translate-x-2 -translate-y-2 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap opacity-0 shadow-md backdrop-blur-sm transition-opacity duration-200 ease-out group-hover:opacity-100 sm:ml-1.5 sm:-translate-x-2.5 sm:-translate-y-2.5"
+                  className={cn(
+                    "border-border bg-background/95 text-foreground pointer-events-none absolute top-0 left-full z-10 ml-1 -translate-y-2 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-md backdrop-blur-sm transition-opacity duration-200 ease-out sm:ml-1.5 sm:-translate-y-2.5",
+                    "max-md:-translate-x-6 max-md:ml-0.5 md:-translate-x-2.5 md:ml-1",
+                    "opacity-0",
+                    showMobilePhotoHint && "max-md:opacity-100",
+                    "md:group-hover:opacity-100",
+                  )}
                   role="tooltip"
+                  aria-live={showMobilePhotoHint ? "polite" : undefined}
                 >
                   {VILLAIN_PROFILE_HOVER_MESSAGE}
                 </span>
@@ -60,15 +143,17 @@ export function Villain() {
             <Sparkle className="text-accent size-3.5" weight="fill" />
             Open to opportunities
           </p>
-          <h1 className="text-foreground text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            {SITE_TAGLINE}
-          </h1>
-          <p
-            className="text-muted mx-auto mt-5 w-full max-w-4xl text-lg leading-snug sm:text-xl line-clamp-3"
-            title={SITE_BIO}
-          >
-            {SITE_BIO}
-          </p>
+          <div ref={titleBioRef}>
+            <h1 className="text-foreground text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              {SITE_TAGLINE}
+            </h1>
+            <p
+              className="text-muted mx-auto mt-5 w-full max-w-4xl text-lg leading-relaxed sm:text-xl md:line-clamp-3 md:leading-snug"
+              title={SITE_BIO}
+            >
+              {SITE_BIO}
+            </p>
+          </div>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <ButtonLink
               href="/projects"
