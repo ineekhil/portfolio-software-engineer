@@ -9,6 +9,7 @@ export const messages = {
     heyHowAreYou: "hey! how are you? 😅",
     /** Shown when the visitor hovers the profile photo. */
     yesImTheOne: "yes! i'm the one you're looking for 😅",
+    iamthebest: "i'm the best 😅",
   },
   /** Places you’ve worked / work (each key is one company name). */
   companies: {
