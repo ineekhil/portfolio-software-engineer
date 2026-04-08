@@ -199,7 +199,6 @@ export function Villain() {
             </h1>
             <p
               className="text-muted mx-auto mt-5 w-full max-w-4xl text-lg leading-relaxed sm:text-xl md:line-clamp-3 md:leading-snug"
-              title={SITE_BIO}
             >
               {SITE_BIO}
             </p>
