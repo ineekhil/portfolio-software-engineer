@@ -1,15 +1,16 @@
 "use client";
 
-import { ArrowRight, Sparkle } from "@phosphor-icons/react";
+import { Code, FolderOpen, Plus, Sparkle, Stack } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
 import {
-  CONTACT_EMAIL,
+  HOME_HERO_RECENT_PROJECTS,
+  HOME_HERO_RECENT_TECH,
+  HOME_HERO_SKILLS,
   SITE_BIO,
   SITE_NAME,
   SITE_TAGLINE,
@@ -203,32 +204,100 @@ export function Villain() {
               {SITE_BIO}
             </p>
           </div>
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-            <ButtonLink
-              href="/projects"
-              variant="primary"
-              className="min-w-[160px]"
-            >
-              View projects
-              <ArrowRight className="size-4" weight="bold" aria-hidden />
-            </ButtonLink>
-            <ButtonLink
-              href="/contact"
-              variant="secondary"
-              className="min-w-[160px]"
-            >
-              Get in touch
-            </ButtonLink>
+          <div className="text-foreground mx-auto mt-12 w-full max-w-4xl text-left">
+            <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
+              <div className="text-center">
+                <div className="flex flex-col items-center gap-2">
+                  <Stack
+                    className="text-accent size-8 shrink-0"
+                    weight="duotone"
+                    aria-hidden
+                  />
+                  <h2 className="text-accent text-xs font-semibold tracking-wide">
+                    Skills
+                  </h2>
+                </div>
+                <ul className="mt-3 flex flex-wrap justify-center gap-2">
+                  {HOME_HERO_SKILLS.map((item) => (
+                    <li key={item}>
+                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      href="/skills"
+                      className="border-border text-muted hover:border-accent/50 hover:text-accent bg-background/80 inline-flex size-4 items-center justify-center rounded-full border border-dashed transition-colors"
+                      aria-label="More skills"
+                    >
+                      <Plus className="size-2.5" weight="bold" aria-hidden />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <div className="flex flex-col items-center gap-2">
+                  <Code
+                    className="text-accent size-8 shrink-0"
+                    weight="duotone"
+                    aria-hidden
+                  />
+                  <h2 className="text-accent text-xs font-semibold tracking-wide">
+                    Recent Technology
+                  </h2>
+                </div>
+                <ul className="mt-3 flex flex-wrap justify-center gap-2">
+                  {HOME_HERO_RECENT_TECH.map((item) => (
+                    <li key={item}>
+                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      href="/skills"
+                      className="border-border text-muted hover:border-accent/50 hover:text-accent bg-background/80 inline-flex size-4 items-center justify-center rounded-full border border-dashed transition-colors"
+                      aria-label="More technologies"
+                    >
+                      <Plus className="size-2.5" weight="bold" aria-hidden />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <div className="flex flex-col items-center gap-2">
+                  <FolderOpen
+                    className="text-accent size-8 shrink-0"
+                    weight="duotone"
+                    aria-hidden
+                  />
+                  <h2 className="text-accent text-xs font-semibold tracking-wide">
+                    Projects
+                  </h2>
+                </div>
+                <ul className="mt-3 flex flex-wrap justify-center gap-2">
+                  {HOME_HERO_RECENT_PROJECTS.map((title) => (
+                    <li key={title}>
+                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
+                        {title}
+                      </span>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      href="/projects"
+                      className="border-border text-muted hover:border-accent/50 hover:text-accent bg-background/80 inline-flex size-4 items-center justify-center rounded-full border border-dashed transition-colors"
+                      aria-label="More projects"
+                    >
+                      <Plus className="size-2.5" weight="bold" aria-hidden />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <p className="text-muted mt-8 text-sm">
-            Prefer email?{" "}
-            <Link
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="text-accent font-medium underline-offset-4 hover:underline"
-            >
-              {CONTACT_EMAIL}
-            </Link>
-          </p>
         </div>
       </Container>
     </section>

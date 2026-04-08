@@ -83,3 +83,28 @@ export const ALL_PROJECTS: Project[] = [
     sourceHref: "#",
   },
 ];
+
+/** Home hero (below bio): recent stack, project names, skills — edit to match you. */
+export const HOME_HERO_RECENT_TECH = [
+  "React Native",
+  "Node.js",
+  "Next.js",
+  "TypeScript",
+  "Express.js",
+  "MongoDB",
+  "Git",
+  "DevOps",
+] as const;
+
+export const HOME_HERO_RECENT_PROJECTS = [
+  "Design system starter",
+  "Analytics dashboard",
+  "API toolkit",
+] as const;
+
+export const HOME_HERO_SKILLS = [
+  "Frontend",
+  "Backend",
+  "DevOps",
+  "Database",
+] as const;
