@@ -37,6 +37,18 @@ export const messages = {
     letsBuildSomethingAmazing: "Let’s build something amazing.",
     dropMeAMessage: "Drop me a message anytime.",
   },
+  /** Experience page — section labels (company detail panel). */
+  experiencePage: {
+    selectCompanyHint: "Click a company logo to see role and details.",
+    companyLabel: "Company:",
+    whatCompanyDoes: "What the company does",
+    location: "Location:",
+    workType: "Work type:",
+    roles: "Roles",
+    workDetails: "Work details",
+    memories: "Memories",
+    technologies: "Technologies I worked on",
+  },
   /** Common job roles. */
   roles: {
     frontendDevelopment: "Frontend Development",
@@ -92,34 +104,7 @@ export const WORKED_COMPANY_LOGOS = [
 export type WorkedCompanyKey =
   (typeof WORKED_COMPANY_LOGOS)[number]["companyKey"];
 
-/** Copy shown when a company logo is selected on the Experience page. */
-export const WORKED_COMPANY_DETAILS: Record<
-  WorkedCompanyKey,
-  {
-    role: string;
-    period: string;
-    summary: string;
-    highlights?: readonly string[];
-  }
-> = {
-  viralFission: {
-    role: "React Developer",
-    period: "—",
-    summary:
-      "Building product experiences for Viral Fission’s platform. Edit this summary with your real scope, stack, and impact.",
-    highlights: [
-      "Shipped features with React and modern frontend tooling.",
-      "Collaborated with design and backend to deliver end-to-end flows.",
-    ],
-  },
-  qurosTech: {
-    role: "Software Engineer",
-    period: "—",
-    summary:
-      "Contributed to Quros Tech products and internal tools. Replace with your role, dates, and outcomes.",
-    highlights: [
-      "Owned parts of the UI and integration with APIs.",
-      "Improved reliability and developer experience where it mattered.",
-    ],
-  },
-};
+export type { WorkArrangement, WorkedCompanyDetail } from "@/lib/companies/types";
+
+/** Per-company copy lives in `lib/companies/<slug>.ts`. */
+export { WORKED_COMPANY_DETAILS } from "@/lib/companies";

@@ -14,17 +14,10 @@ export default function ExperiencePage() {
   return (
     <Section className="pt-12 sm:pt-16">
       <Container>
-        <div className="mx-auto max-w-5xl text-left">
-          <p className="text-accent text-sm font-medium tracking-wider uppercase">
-            Experience
-          </p>
-          <h1 className="text-foreground mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">
+        <div className="mx-auto max-w-5xl">
+          <h1 className="text-foreground text-center text-4xl font-semibold tracking-tight sm:text-left sm:text-5xl">
             Where I&apos;ve worked
           </h1>
-          <p className="text-muted mt-6 text-lg leading-relaxed">
-            Add roles, companies, and timelines here — every place you&apos;ve
-            contributed.
-          </p>
 
           <ExperienceCompaniesSection />
         </div>

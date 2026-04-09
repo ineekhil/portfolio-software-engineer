@@ -1,5 +1,13 @@
 "use client";
 
+import Image from "next/image";
+import {
+  Briefcase,
+  ClipboardText,
+  Images,
+  MapPin,
+  UsersThree,
+} from "@phosphor-icons/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { CompanyLogoMark } from "@/components/company-logo-mark";
@@ -123,7 +131,7 @@ function CompanyLogosWave({
       onPointerLeave={onPointerLeave}
       onPointerCancel={onPointerLeave}
     >
-      <div className="-mx-1 overflow-x-auto px-1 pt-10 pb-6 [scrollbar-gutter:stable]">
+      <div className="-mx-1 flex justify-center overflow-x-auto px-1 pt-10 pb-6 [scrollbar-gutter:stable] sm:justify-start">
         <ul className="flex w-max max-w-none flex-nowrap gap-1.5 overflow-visible px-2 sm:gap-2 sm:px-3">
           {items.map((item, index) => {
             const scale = reduceMotion ? MIN_SCALE : scales[index] ?? MIN_SCALE;
@@ -214,7 +222,7 @@ export function ExperienceCompaniesSection() {
 
   return (
     <>
-      <div className="border-border bg-surface-muted/40 mt-10 w-full overflow-visible rounded-3xl border px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5">
+      <div className="border-border bg-surface-muted/40 mt-10 w-full overflow-visible rounded-3xl border px-5 py-4 text-center sm:px-6 sm:py-5 sm:text-left lg:px-8 lg:py-5">
         <p className="text-muted text-xs font-medium tracking-wide uppercase">
           Companies
         </p>
@@ -226,37 +234,169 @@ export function ExperienceCompaniesSection() {
       </div>
 
       {selectedKey == null ? (
-        <p className="text-muted mt-6 text-sm leading-relaxed">
-          Click a company logo to see role and details.
+        <p className="text-muted mt-6 text-center text-sm leading-relaxed sm:text-left">
+          {messages.experiencePage.selectCompanyHint}
         </p>
       ) : null}
 
       {detail && companyName && selectedKey != null ? (
         <div
-          className="mt-8 w-full"
+          className="mt-8 w-full space-y-8 text-left"
           role="region"
           aria-labelledby="company-detail-heading"
         >
-          <p className="text-muted text-xs font-medium tracking-wide uppercase">
-            Details
-          </p>
-          <h2
-            id="company-detail-heading"
-            className="text-foreground mt-2 text-xl font-semibold tracking-tight sm:text-2xl"
-          >
-            {companyName}
-          </h2>
-          <p className="text-foreground mt-1 text-sm font-medium">{detail.role}</p>
-          <p className="text-muted mt-0.5 text-sm">{detail.period}</p>
-          <p className="text-foreground/90 mt-4 text-base leading-relaxed">
-            {detail.summary}
-          </p>
-          {detail.highlights && detail.highlights.length > 0 ? (
-            <ul className="text-foreground/90 mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed">
-              {detail.highlights.map((line, i) => (
-                <li key={`${selectedKey}-h-${i}`}>{line}</li>
+          <div className="space-y-3">
+            <header>
+              <h2
+                id="company-detail-heading"
+                className="text-foreground text-xl font-semibold tracking-tight sm:text-2xl"
+              >
+                <span className="text-muted font-medium">
+                  {messages.experiencePage.companyLabel}
+                </span>{" "}
+                <span>{companyName}</span>
+              </h2>
+            </header>
+
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-12 sm:gap-y-2">
+              <div className="flex items-center gap-3">
+                <span className="text-accent inline-flex shrink-0">
+                  <MapPin className="size-5" weight="duotone" aria-hidden />
+                </span>
+                <p className="text-foreground text-sm leading-relaxed">
+                  <span className="text-muted font-medium">
+                    {messages.experiencePage.location}
+                  </span>{" "}
+                  {detail.locationMapUrl ? (
+                    <a
+                      href={detail.locationMapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent underline-offset-4 hover:underline"
+                    >
+                      {detail.location}
+                    </a>
+                  ) : (
+                    detail.location
+                  )}
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-accent inline-flex shrink-0">
+                  <Briefcase className="size-5" weight="duotone" aria-hidden />
+                </span>
+                <p className="text-foreground text-sm leading-relaxed">
+                  <span className="text-muted font-medium">
+                    {messages.experiencePage.workType}
+                  </span>{" "}
+                  {detail.workArrangement}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <section aria-labelledby={`${selectedKey}-about-heading`}>
+            <h3
+              id={`${selectedKey}-about-heading`}
+              className="text-foreground text-base font-semibold tracking-tight"
+            >
+              {messages.experiencePage.whatCompanyDoes}
+            </h3>
+            <div className="text-foreground/90 mt-3 space-y-2 text-base leading-snug">
+              {detail.aboutLines.map((line, i) => (
+                <p key={`${selectedKey}-about-${i}`}>{line}</p>
+              ))}
+            </div>
+            {detail.technologies && detail.technologies.length > 0 ? (
+              <p className="text-foreground/90 mt-4 text-sm leading-snug">
+                <span className="text-foreground font-semibold">
+                  {messages.experiencePage.technologies}:{" "}
+                </span>
+                {detail.technologies.join(", ")}
+              </p>
+            ) : null}
+          </section>
+
+          <section aria-labelledby={`${selectedKey}-roles-heading`}>
+            <h3
+              id={`${selectedKey}-roles-heading`}
+              className="text-foreground flex items-center gap-2 text-base font-semibold tracking-tight"
+            >
+              <UsersThree
+                className="text-accent size-5 shrink-0"
+                weight="duotone"
+                aria-hidden
+              />
+              {messages.experiencePage.roles}
+            </h3>
+            <ul className="text-foreground/90 mt-3 space-y-2 text-base leading-relaxed">
+              {detail.rolesTimeline.map((r) => (
+                <li key={`${selectedKey}-role-${r.title}-${r.period}`}>
+                  <span className="font-medium">{r.title}</span>
+                  <span className="text-muted"> ({r.period})</span>
+                </li>
               ))}
             </ul>
+          </section>
+
+          <section aria-labelledby={`${selectedKey}-work-heading`}>
+            <h3
+              id={`${selectedKey}-work-heading`}
+              className="text-foreground flex items-center gap-2 text-base font-semibold tracking-tight"
+            >
+              <ClipboardText
+                className="text-accent size-5 shrink-0"
+                weight="duotone"
+                aria-hidden
+              />
+              {messages.experiencePage.workDetails}
+            </h3>
+            <div className="mt-4 space-y-8">
+              {detail.workDetails.map((block) => (
+                <div key={`${selectedKey}-wd-${block.roleTitle}`}>
+                  <p className="text-foreground font-medium">{block.roleTitle}</p>
+                  <ul className="text-foreground/90 mt-2 list-disc space-y-2 pl-5 text-base leading-relaxed">
+                    {block.bullets.map((line, i) => (
+                      <li key={`${selectedKey}-wd-${block.roleTitle}-${i}`}>
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {detail.memories.length > 0 ? (
+            <section aria-labelledby={`${selectedKey}-mem-heading`}>
+              <h3
+                id={`${selectedKey}-mem-heading`}
+                className="text-foreground flex items-center gap-2 text-base font-semibold tracking-tight"
+              >
+                <Images
+                  className="text-accent size-5 shrink-0"
+                  weight="duotone"
+                  aria-hidden
+                />
+                {messages.experiencePage.memories}
+              </h3>
+              <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                {detail.memories.map((photo, i) => (
+                  <li
+                    key={`${selectedKey}-mem-${i}`}
+                    className="relative aspect-square overflow-hidden rounded-xl border border-border bg-surface-muted"
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
+                      className="object-cover"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </section>
           ) : null}
         </div>
       ) : null}
