@@ -77,4 +77,49 @@ export const companiesHoverOrder = [
   messages.companies.jpMorgan,
 ] as const;
 
-export type Messages = typeof messages;
+/**
+ * Company logos on the Experience page. `svg` uses `ViralFissionLogo`; `image` uses `public/logos/`.
+ */
+export const WORKED_COMPANY_LOGOS = [
+  { companyKey: "viralFission", kind: "svg" as const },
+  {
+    companyKey: "qurosTech",
+    kind: "image" as const,
+    logoSrc: "/logos/quros-tech.png",
+  },
+] as const;
+
+export type WorkedCompanyKey =
+  (typeof WORKED_COMPANY_LOGOS)[number]["companyKey"];
+
+/** Copy shown when a company logo is selected on the Experience page. */
+export const WORKED_COMPANY_DETAILS: Record<
+  WorkedCompanyKey,
+  {
+    role: string;
+    period: string;
+    summary: string;
+    highlights?: readonly string[];
+  }
+> = {
+  viralFission: {
+    role: "React Developer",
+    period: "—",
+    summary:
+      "Building product experiences for Viral Fission’s platform. Edit this summary with your real scope, stack, and impact.",
+    highlights: [
+      "Shipped features with React and modern frontend tooling.",
+      "Collaborated with design and backend to deliver end-to-end flows.",
+    ],
+  },
+  qurosTech: {
+    role: "Software Engineer",
+    period: "—",
+    summary:
+      "Contributed to Quros Tech products and internal tools. Replace with your role, dates, and outcomes.",
+    highlights: [
+      "Owned parts of the UI and integration with APIs.",
+      "Improved reliability and developer experience where it mattered.",
+    ],
+  },
+};

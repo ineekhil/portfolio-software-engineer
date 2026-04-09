@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { ExperienceCompaniesSection } from "@/components/experience/experience-companies-section";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SITE_NAME } from "@/lib/constants";
@@ -13,7 +14,7 @@ export default function ExperiencePage() {
   return (
     <Section className="pt-12 sm:pt-16">
       <Container>
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-5xl text-left">
           <p className="text-accent text-sm font-medium tracking-wider uppercase">
             Experience
           </p>
@@ -24,6 +25,8 @@ export default function ExperiencePage() {
             Add roles, companies, and timelines here — every place you&apos;ve
             contributed.
           </p>
+
+          <ExperienceCompaniesSection />
         </div>
       </Container>
     </Section>
