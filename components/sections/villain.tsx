@@ -148,8 +148,11 @@ export function Villain() {
                 </div>
                 <span
                   className={cn(
-                    "border-border bg-background/95 text-foreground pointer-events-none absolute top-0 left-full z-10 ml-1 -translate-y-2 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-md backdrop-blur-sm transition-opacity duration-200 ease-out sm:ml-1.5 sm:-translate-y-2.5",
-                    "max-md:-translate-x-6 max-md:ml-0.5 md:-translate-x-2.5 md:ml-1",
+                    "border-border bg-background/95 text-foreground pointer-events-none absolute top-0 left-full z-10 ml-2.5 -translate-y-2 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-md backdrop-blur-sm transition-[opacity,margin,transform] duration-200 ease-out sm:ml-3 sm:-translate-y-2.5",
+                    "max-md:-translate-x-6 max-md:ml-2",
+                    isProfileHovering
+                      ? "md:-translate-x-2.5 md:ml-1 lg:ml-0.5"
+                      : "md:-translate-x-4 md:ml-0 lg:-translate-x-5 lg:ml-0",
                     "opacity-0",
                     showProfileTooltip && "opacity-100",
                   )}
