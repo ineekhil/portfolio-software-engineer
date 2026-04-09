@@ -14,6 +14,7 @@ import {
   SITE_BIO,
   SITE_NAME,
   SITE_TAGLINE,
+  VILLAIN_PROFILE_IMAGE_FALLBACK,
   VILLAIN_PROFILE_IMAGE_URL,
 } from "@/lib/constants";
 import {
@@ -35,6 +36,8 @@ export function Villain() {
   const [showTimedProfileHint, setShowTimedProfileHint] = useState(false);
   const profileHintTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const wasSectionInViewRef = useRef(false);
+  const profileImageDidFallbackRef = useRef(false);
+  const [profileImageSrc, setProfileImageSrc] = useState(VILLAIN_PROFILE_IMAGE_URL);
 
   const profileTooltipText = isProfileHovering
     ? messages.profileHover.yesImTheOne
@@ -128,13 +131,18 @@ export function Villain() {
                 <div className="group-hover:outline-accent rounded-full outline outline-2 outline-offset-[6px] outline-transparent transition-[transform,outline-color,outline-style] duration-300 ease-out group-hover:scale-[1.03] group-hover:outline-dashed">
                   <div className="border-border bg-surface-muted relative size-28 shrink-0 overflow-hidden rounded-full border-2 shadow-md ring-2 ring-black/5 sm:size-32 dark:ring-white/10">
                     <Image
-                      src={VILLAIN_PROFILE_IMAGE_URL}
+                      src={profileImageSrc}
                       alt={`${SITE_NAME} profile photo`}
                       width={400}
                       height={400}
                       sizes="(max-width: 640px) 7rem, 8rem"
                       className="size-full object-cover object-center"
                       priority
+                      onError={() => {
+                        if (profileImageDidFallbackRef.current) return;
+                        profileImageDidFallbackRef.current = true;
+                        setProfileImageSrc(VILLAIN_PROFILE_IMAGE_FALLBACK);
+                      }}
                     />
                   </div>
                 </div>
