@@ -9,7 +9,6 @@ export const qurosTechDetail: WorkedCompanyDetail = {
   ],
   location: "Pune, India",
   workArrangement: "Hybrid",
-  technologies: ["React", "Next.js", "Node.js", "Kotlin"],
   rolesTimeline: [
     { title: "Software Engineer", period: "Jan 2025 – Present" },
     { title: "QA Engineer", period: "Jul 2024 – Dec 2024" },
@@ -18,6 +17,21 @@ export const qurosTechDetail: WorkedCompanyDetail = {
   workDetails: [
     {
       roleTitle: "Software Engineer",
+      technologies: [
+        "TypeScript",
+        "AWS",
+        "Jest",
+        "React",
+        "React Native",
+        "Next.js",
+        "Node.js",
+        "Figma",
+        "Firebase",
+        "MongoDB",
+        "Postman",
+        "Git",
+        "Jira",
+      ],
       bullets: [
         "Built web apps using React/Next.js.",
         "Developed APIs with Node.js.",
@@ -26,6 +40,7 @@ export const qurosTechDetail: WorkedCompanyDetail = {
     },
     {
       roleTitle: "QA Engineer",
+      technologies: ["TypeScript", "Jest", "Postman", "Jira", "Git"],
       bullets: [
         "Tested APIs using Postman.",
         "Reported bugs using JIRA.",
@@ -33,6 +48,7 @@ export const qurosTechDetail: WorkedCompanyDetail = {
     },
     {
       roleTitle: "Android Intern",
+      technologies: ["Kotlin", "Firebase", "Git", "Figma"],
       bullets: [
         "Built basic Android apps using Kotlin.",
         "Integrated APIs.",

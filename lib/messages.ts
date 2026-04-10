@@ -47,7 +47,11 @@ export const messages = {
     roles: "Roles",
     workDetails: "Work details",
     memories: "Memories",
-    technologies: "Technologies I worked on",
+    technologies: "Technologies I worked on:",
+    mobileApp: "Mobile app",
+    googlePlay: "Google Play",
+    appStore: "App Store",
+    webLinks: "Links",
   },
   /** Common job roles. */
   roles: {

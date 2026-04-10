@@ -8,13 +8,23 @@ export type WorkedCompanyDetail = {
   location: string;
   /** Optional Google Maps (or other) link for the office / place. */
   locationMapUrl?: string;
+  /** Optional company mobile app (e.g. Vi-Fi) — Google Play & App Store. */
+  mobileApp?: {
+    readonly name: string;
+    readonly playStoreUrl: string;
+    readonly appStoreUrl: string;
+  };
+  /** Optional public sites / products (label + URL). */
+  webLinks?: readonly { readonly label: string; readonly href: string }[];
   workArrangement: WorkArrangement;
-  /** Tools & stack you used at this company (optional). */
-  technologies?: readonly string[];
   /** Role history, most recent first. */
   rolesTimeline: readonly { title: string; period: string }[];
-  /** Bullets grouped by role title. */
-  workDetails: readonly { roleTitle: string; bullets: readonly string[] }[];
+  /** Bullets grouped by role title; optional `technologies` under each role heading. */
+  workDetails: readonly {
+    roleTitle: string;
+    bullets: readonly string[];
+    technologies?: readonly string[];
+  }[];
   /** Team or office moments — local paths or allowed remote images. */
   memories: readonly { src: string; alt: string }[];
 };
