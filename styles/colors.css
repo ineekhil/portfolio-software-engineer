@@ -24,7 +24,7 @@
   /* Header social — light hover fill */
   --social-light-hover-bg-email: #57595B;
   --social-light-hover-bg-whatsapp: #79ae6f;
-  --social-light-hover-bg-instagram: #c44a3a;
+  --social-light-hover-bg-instagram: #ee2a7b;
   --social-light-hover-bg-linkedin: #0077B5;
   --social-light-hover-bg-github: #24292f;
   --social-light-hover-bg-x: #000000;
@@ -65,7 +65,7 @@
   /* Header social — per-network dark hover border */
   --social-hover-border-email: #57595B;
   --social-hover-border-whatsapp: #238636;
-  --social-hover-border-instagram: #c44a3a;
+  --social-hover-border-instagram: #ee2a7b;
   --social-hover-border-linkedin: #0077B5;
   --social-hover-border-github: #ffffff;
   --social-hover-border-x: #574964;
