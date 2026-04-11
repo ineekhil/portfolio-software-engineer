@@ -31,7 +31,7 @@ export function IconTooltip({
       <span
         role="tooltip"
         className={cn(
-          "border-border/50 bg-background/35 text-foreground dark:bg-background/30 pointer-events-none absolute left-1/2 z-[70] -translate-x-1/2 rounded-md border px-2 py-1 text-xs font-medium whitespace-nowrap opacity-0 shadow-sm ring-1 ring-black/5 backdrop-blur-xl transition-opacity duration-200 dark:ring-white/10",
+          "border-border/50 bg-background/35 text-foreground dark:bg-background/30 pointer-events-none absolute left-1/2 z-[70] max-w-[min(18rem,calc(100dvw-1rem))] -translate-x-1/2 rounded-md border px-2 py-1 text-center text-xs font-medium whitespace-normal opacity-0 shadow-sm ring-1 ring-black/5 backdrop-blur-xl transition-opacity duration-200 md:whitespace-nowrap dark:ring-white/10",
           !preserveCase && "lowercase",
           "group-hover/tooltip:opacity-100 group-focus-visible/tooltip:opacity-100",
           side === "bottom" && "top-full mt-1.5",

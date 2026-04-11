@@ -44,10 +44,10 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full max-w-full scroll-smooth antialiased`}
       suppressHydrationWarning
     >
-      <body className="bg-background text-foreground min-h-full font-sans">
+      <body className="bg-background text-foreground min-h-full min-w-0 max-w-full overflow-x-hidden font-sans">
         <ThemeProvider>
           <AppShell>{children}</AppShell>
         </ThemeProvider>

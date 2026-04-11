@@ -48,7 +48,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   );
 
   const cardClassName = cn(
-    "group flex h-full flex-col rounded-2xl border border-border bg-background p-6 shadow-sm transition-shadow hover:shadow-md",
+    "group flex h-full flex-col rounded-2xl border border-border bg-background p-5 shadow-sm transition-shadow hover:shadow-md min-[375px]:p-6",
     href && "cursor-pointer",
     className,
   );

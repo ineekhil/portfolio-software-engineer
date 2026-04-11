@@ -38,7 +38,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-border border-t">
+    <footer className="border-border w-full max-w-full overflow-x-hidden border-t">
       <Container className="flex flex-col items-center gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-muted text-sm">
           © {year} {COPYRIGHT_HOLDER} | Made in India <IndiaFlagMicro /> 💛

@@ -31,18 +31,18 @@ export function HomeHighlights() {
     <Section>
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="text-foreground text-2xl font-semibold tracking-tight min-[375px]:text-3xl sm:text-4xl">
             How I work
           </h2>
-          <p className="text-muted mt-4 text-lg">
+          <p className="text-muted mt-3 text-base min-[375px]:mt-4 min-[375px]:text-lg">
             Pragmatic engineering with an eye for product and polish.
           </p>
         </div>
-        <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-5 min-[375px]:mt-12 min-[375px]:gap-6 min-[425px]:mt-14 sm:grid-cols-2 lg:grid-cols-3">
           {highlights.map(({ title, description, icon: Icon }) => (
             <li
               key={title}
-              className="border-border bg-surface-muted/40 hover:bg-surface-muted/70 rounded-2xl border p-6 transition-colors"
+              className="border-border bg-surface-muted/40 hover:bg-surface-muted/70 rounded-2xl border p-5 transition-colors min-[375px]:p-6"
             >
               <Icon
                 className="text-accent size-9"

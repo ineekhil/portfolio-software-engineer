@@ -70,18 +70,18 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between gap-3">
+    <header className="border-border bg-background/80 sticky top-0 z-50 w-full max-w-full overflow-x-hidden border-b backdrop-blur-md">
+      <Container className="flex h-14 min-[375px]:h-16 items-center justify-between gap-2 min-[375px]:gap-3">
         <Link
           href="/"
-          className="text-foreground flex shrink-0 items-center gap-2 text-lg font-semibold tracking-tight transition-opacity hover:opacity-80"
+          className="text-foreground flex min-w-0 shrink items-center gap-1.5 min-[375px]:gap-2 text-base font-semibold tracking-tight transition-opacity hover:opacity-80 min-[375px]:text-lg"
         >
           <Code
-            className="text-accent size-5 shrink-0 sm:size-[1.35rem]"
+            className="text-accent size-[1.125rem] shrink-0 min-[375px]:size-5 sm:size-[1.35rem]"
             weight="duotone"
             aria-hidden
           />
-          <span className="uppercase">{SITE_NAME}</span>
+          <span className="truncate uppercase">{SITE_NAME}</span>
         </Link>
 
         <nav
@@ -148,7 +148,7 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 md:max-w-none md:flex-none md:gap-3">
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-1.5 min-[375px]:gap-2 md:max-w-none md:flex-none md:gap-3">
           <div className="hidden max-w-md min-w-0 flex-1 items-center gap-3 md:flex">
             <ThemeToggle className="shrink-0 rounded-full" />
             <HeaderSearch className="max-w-[min(100%,40rem)]" />
@@ -156,7 +156,7 @@ export function Navbar() {
             <HeaderDecorIcons />
           </div>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-1.5 min-[375px]:gap-2 md:hidden">
             <HeaderDecorIcons onNavigate={() => setOpen(false)} />
             <IconTooltip label="download cv" side="bottom" preserveCase>
               <Link
@@ -210,7 +210,7 @@ export function Navbar() {
       {open ? (
         <div
           id="mobile-nav"
-          className="border-border bg-background max-h-[min(85vh,calc(100dvh-4rem))] overflow-y-auto border-t md:hidden"
+          className="border-border bg-background max-h-[min(85vh,calc(100dvh-3.5rem))] min-[375px]:max-h-[min(85vh,calc(100dvh-4rem))] overflow-y-auto border-t md:hidden"
         >
           <Container className="flex flex-col gap-4 py-4">
             <nav className="flex flex-col gap-1" aria-label="Mobile main">

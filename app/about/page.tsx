@@ -12,16 +12,18 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <Section className="pt-12 sm:pt-16">
+    <Section className="pt-10 min-[375px]:pt-12 sm:pt-16">
       <Container>
         <div className="mx-auto max-w-3xl">
-          <p className="text-accent text-sm font-medium tracking-wider uppercase">
+          <p className="text-accent text-xs font-medium tracking-wider uppercase min-[375px]:text-sm">
             About
           </p>
-          <h1 className="text-foreground mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 className="text-foreground mt-2 text-3xl font-semibold tracking-tight min-[375px]:text-4xl sm:text-5xl">
             Hi, I&apos;m {SITE_NAME}
           </h1>
-          <p className="text-muted mt-6 text-lg leading-relaxed">{SITE_BIO}</p>
+          <p className="text-muted mt-4 text-base leading-relaxed min-[375px]:mt-6 min-[375px]:text-lg">
+            {SITE_BIO}
+          </p>
 
           <AboutSkills />
         </div>

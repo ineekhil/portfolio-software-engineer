@@ -105,7 +105,7 @@ export function Villain() {
   return (
     <section
       ref={sectionRef}
-      className="border-border relative overflow-visible border-b bg-gradient-to-b from-surface-muted/35 via-background/55 to-background/80 pt-16 pb-20 sm:pt-20 sm:pb-28 lg:pt-28 lg:pb-32"
+      className="border-border relative overflow-x-clip overflow-y-visible border-b bg-gradient-to-b from-surface-muted/35 via-background/55 to-background/80 pt-12 pb-16 min-[375px]:pt-16 min-[375px]:pb-20 sm:pt-20 sm:pb-28 lg:pt-28 lg:pb-32"
     >
       <div
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden opacity-40 dark:opacity-25"
@@ -115,8 +115,8 @@ export function Villain() {
         <div className="bg-villain-glow-secondary absolute -right-1/4 bottom-0 h-96 w-96 rounded-full blur-3xl" />
       </div>
       <Container>
-        <div className="mx-auto max-w-5xl text-center">
-          <div className="mb-5 flex flex-col items-center overflow-visible pt-1">
+        <div className="mx-auto min-w-0 max-w-5xl text-center">
+          <div className="mb-5 flex w-full max-w-full flex-col items-center overflow-visible pt-1">
             <Link
               href="/contact"
               className="group focus-visible:ring-ring focus-visible:ring-offset-background inline-flex shrink-0 rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
@@ -126,13 +126,13 @@ export function Villain() {
             >
               <div className="relative shrink-0">
                 <div className="group-hover:outline-accent rounded-full outline outline-2 outline-offset-[6px] outline-transparent transition-[transform,outline-color,outline-style] duration-300 ease-out group-hover:scale-[1.03] group-hover:outline-dashed">
-                  <div className="border-border bg-surface-muted relative size-28 shrink-0 overflow-hidden rounded-full border-2 shadow-md ring-2 ring-black/5 sm:size-32 dark:ring-white/10">
+                  <div className="border-border bg-surface-muted relative size-24 shrink-0 overflow-hidden rounded-full border-2 shadow-md ring-2 ring-black/5 min-[375px]:size-28 sm:size-32 dark:ring-white/10">
                     <Image
                       src={VILLAIN_PROFILE_IMAGE}
                       alt={`${SITE_NAME} profile photo`}
                       width={400}
                       height={400}
-                      sizes="(max-width: 640px) 7rem, 8rem"
+                      sizes="(max-width: 374px) 6rem, (max-width: 640px) 7rem, 8rem"
                       className="size-full object-cover object-center"
                       priority
                     />
@@ -140,11 +140,11 @@ export function Villain() {
                 </div>
                 <span
                   className={cn(
-                    "border-border bg-background/95 text-foreground pointer-events-none absolute top-0 left-full z-10 ml-2.5 -translate-y-2 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-md backdrop-blur-sm transition-[opacity,margin,transform] duration-200 ease-out sm:ml-3 sm:-translate-y-2.5",
-                    "max-md:-translate-x-6 max-md:ml-2",
-                    isProfileHovering
-                      ? "md:-translate-x-2.5 md:ml-1 lg:ml-0.5"
-                      : "md:-translate-x-4 md:ml-0 lg:-translate-x-5 lg:ml-0",
+                    "border-border bg-background/95 text-foreground pointer-events-none absolute z-10 rounded-full border px-3 py-1.5 text-xs font-medium shadow-md backdrop-blur-sm transition-[opacity,transform] duration-200 ease-out",
+                    "top-0 w-max max-w-[calc(100dvw-7.5rem)] -translate-y-0.5 whitespace-nowrap text-left",
+                    "left-[calc(100%-2.125rem)] max-[360px]:left-[calc(100%-1.75rem)] max-[360px]:-translate-y-2 min-[375px]:left-[calc(100%-2.25rem)] sm:left-[calc(100%-2.5rem)]",
+                    "overflow-x-auto [scrollbar-width:thin]",
+                    isProfileHovering ? "translate-x-0.5" : "-translate-x-0.5",
                     "opacity-0",
                     showProfileTooltip && "opacity-100",
                   )}
@@ -157,7 +157,7 @@ export function Villain() {
             </Link>
           </div>
           <div
-            className="relative mb-4 inline-flex max-w-full items-center justify-center"
+            className="relative mb-4 flex w-full max-w-full flex-col items-center overflow-x-clip"
             onPointerEnter={() => setIsOpenToOpportunitiesHovering(true)}
             onPointerLeave={() => setIsOpenToOpportunitiesHovering(false)}
           >
@@ -172,7 +172,9 @@ export function Villain() {
             </p>
             <div
               className={cn(
-                "pointer-events-none absolute top-1/2 left-full z-10 ml-1.5 flex w-max max-w-[min(calc(100vw-2rem),16rem)] -translate-y-1/2 flex-col gap-1 transition-opacity duration-200 ease-out",
+                "pointer-events-none absolute z-10 flex flex-col gap-1 transition-opacity duration-200 ease-out",
+                "max-md:left-1/2 max-md:top-full max-md:mt-2 max-md:ml-0 max-md:w-full max-md:max-w-[min(18rem,calc(100dvw-1.5rem))] max-md:-translate-x-1/2 max-md:translate-y-0 max-md:items-center",
+                "md:top-1/2 md:left-full md:ml-1.5 md:w-max md:-translate-y-1/2 md:translate-x-0 md:items-stretch md:max-w-[min(16rem,calc(100dvw-2rem))]",
                 "opacity-0",
                 isOpenToOpportunitiesHovering && "opacity-100",
               )}
@@ -197,17 +199,17 @@ export function Villain() {
             </div>
           </div>
           <div>
-            <h1 className="text-foreground text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="text-foreground text-3xl font-semibold tracking-tight text-balance min-[375px]:text-4xl sm:text-5xl lg:text-6xl">
               {SITE_TAGLINE}
             </h1>
             <p
-              className="text-muted mx-auto mt-5 w-full max-w-4xl text-lg leading-relaxed sm:text-xl md:line-clamp-3 md:leading-snug"
+              className="text-muted mx-auto mt-4 w-full max-w-4xl text-base leading-relaxed min-[375px]:mt-5 min-[375px]:text-lg sm:mt-5 sm:text-xl md:line-clamp-3 md:leading-snug"
             >
               {SITE_BIO}
             </p>
           </div>
-          <div className="text-foreground mx-auto mt-12 w-full max-w-4xl text-left">
-            <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
+          <div className="text-foreground mx-auto mt-8 w-full max-w-4xl text-left min-[375px]:mt-10 min-[425px]:mt-12 sm:mt-12">
+            <div className="grid gap-8 min-[375px]:gap-9 min-[425px]:gap-10 sm:grid-cols-3 sm:gap-8">
               <div className="text-center">
                 <div className="flex flex-col items-center gap-2">
                   <Stack

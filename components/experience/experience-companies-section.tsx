@@ -135,12 +135,12 @@ function CompanyLogosWave({
 
   return (
     <div
-      className="mt-3 overflow-visible"
+      className="mt-3 min-w-0 max-w-full overflow-visible"
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
       onPointerCancel={onPointerLeave}
     >
-      <div className="-mx-1 flex justify-center overflow-x-auto px-1 pt-10 pb-6 [scrollbar-gutter:stable] sm:justify-start">
+      <div className="-mx-1 flex min-w-0 max-w-full justify-center overflow-x-auto overscroll-x-contain px-1 pt-10 pb-6 [scrollbar-gutter:stable] sm:justify-start">
         <ul className="flex w-max max-w-none flex-nowrap gap-1.5 overflow-visible px-2 sm:gap-2 sm:px-3">
           {items.map((item, index) => {
             const scale = reduceMotion ? MIN_SCALE : scales[index] ?? MIN_SCALE;

@@ -13,7 +13,10 @@ export function Section({
 }: SectionProps) {
   return (
     <Component
-      className={cn("py-16 sm:py-20 lg:py-24", className)}
+      className={cn(
+        "py-12 min-[375px]:py-14 min-[425px]:py-16 sm:py-20 lg:py-24",
+        className,
+      )}
       {...props}
     />
   );

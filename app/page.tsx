@@ -16,12 +16,12 @@ export default function HomePage() {
 
       <Section className="border-border bg-surface-muted/30 border-t">
         <Container>
-          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+          <div className="flex flex-col items-start justify-between gap-5 min-[375px]:gap-6 sm:flex-row sm:items-end">
             <div className="max-w-xl">
-              <h2 className="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl">
+              <h2 className="text-foreground text-2xl font-semibold tracking-tight min-[375px]:text-3xl sm:text-4xl">
                 Featured work
               </h2>
-              <p className="text-muted mt-3 text-lg">
+              <p className="text-muted mt-2 text-base min-[375px]:mt-3 min-[375px]:text-lg">
                 A few representative projects. Replace with your own case
                 studies.
               </p>
@@ -30,7 +30,7 @@ export default function HomePage() {
               All projects
             </ButtonLink>
           </div>
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2">
+          <ul className="mt-8 grid gap-5 min-[375px]:mt-10 min-[375px]:gap-6 min-[425px]:mt-12 sm:grid-cols-2">
             {FEATURED_PROJECTS.map((project) => (
               <li key={project.id}>
                 <ProjectCard project={project} />
@@ -42,11 +42,11 @@ export default function HomePage() {
 
       <Section>
         <Container>
-          <div className="border-border from-accent/10 mx-auto max-w-2xl rounded-3xl border bg-gradient-to-br to-transparent p-8 text-center sm:p-12">
-            <h2 className="text-foreground text-2xl font-semibold tracking-tight sm:text-3xl">
+          <div className="border-border from-accent/10 mx-auto max-w-2xl rounded-3xl border bg-gradient-to-br to-transparent p-6 text-center min-[375px]:p-8 sm:p-12">
+            <h2 className="text-foreground text-xl font-semibold tracking-tight min-[375px]:text-2xl sm:text-3xl">
               Let&apos;s build something great
             </h2>
-            <p className="text-muted mt-3">
+            <p className="text-muted mt-2 text-sm min-[375px]:mt-3 min-[375px]:text-base">
               Tell me about your team, timeline, and what success looks like.
             </p>
             <ButtonLink href="/contact" variant="primary" className="mt-8">
