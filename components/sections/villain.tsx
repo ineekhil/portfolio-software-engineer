@@ -142,9 +142,9 @@ export function Villain() {
                   className={cn(
                     "border-border bg-background/95 text-foreground pointer-events-none absolute z-10 rounded-full border px-3 py-1.5 text-xs font-medium shadow-md backdrop-blur-sm transition-[opacity,transform] duration-200 ease-out",
                     "top-0 w-max max-w-[calc(100dvw-7.5rem)] -translate-y-0.5 whitespace-nowrap text-left",
-                    "left-[calc(100%-2.125rem)] max-[360px]:left-[calc(100%-1.75rem)] max-[360px]:-translate-y-2 min-[375px]:left-[calc(100%-2.25rem)] sm:left-[calc(100%-2.5rem)]",
+                    "left-[calc(100%-2.125rem)] max-[360px]:left-[calc(100%-1.75rem)] max-[360px]:-translate-y-2 min-[375px]:left-[calc(100%-2.25rem)] sm:left-[calc(100%-2.5rem)] md:left-[calc(100%-1.25rem)] lg:left-[calc(100%-1rem)]",
                     "overflow-x-auto [scrollbar-width:thin]",
-                    isProfileHovering ? "translate-x-0.5" : "-translate-x-0.5",
+                    isProfileHovering ? "translate-x-2.5" : "-translate-x-0.5",
                     "opacity-0",
                     showProfileTooltip && "opacity-100",
                   )}
