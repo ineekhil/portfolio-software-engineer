@@ -9,6 +9,7 @@ export const messages = {
     heyHowAreYou: "hey! how are you? 😅",
     /** Shown when the visitor hovers the profile photo. */
     yesImTheOne: "yes! i'm the one you're looking for 😅",
+    iamthebest: "i'm the best 😅",
   },
   /** Places you’ve worked / work (each key is one company name). */
   companies: {
@@ -35,6 +36,22 @@ export const messages = {
     feelFreeToReachOut: "Feel free to reach out.",
     letsBuildSomethingAmazing: "Let’s build something amazing.",
     dropMeAMessage: "Drop me a message anytime.",
+  },
+  /** Experience page — section labels (company detail panel). */
+  experiencePage: {
+    selectCompanyHint: "Click a company logo to see role and details.",
+    companyLabel: "Company:",
+    whatCompanyDoes: "What the company does",
+    location: "Location:",
+    workType: "Work type:",
+    roles: "Roles",
+    workDetails: "Work details",
+    memories: "Memories",
+    technologies: "Technologies I worked on:",
+    mobileApp: "Mobile app",
+    googlePlay: "Google Play",
+    appStore: "App Store",
+    webLinks: "Links",
   },
   /** Common job roles. */
   roles: {
@@ -76,4 +93,22 @@ export const companiesHoverOrder = [
   messages.companies.jpMorgan,
 ] as const;
 
-export type Messages = typeof messages;
+/**
+ * Company logos on the Experience page. `svg` uses `ViralFissionLogo`; `image` uses `public/logos/`.
+ */
+export const WORKED_COMPANY_LOGOS = [
+  { companyKey: "viralFission", kind: "svg" as const },
+  {
+    companyKey: "qurosTech",
+    kind: "image" as const,
+    logoSrc: "/logos/quros-tech.png",
+  },
+] as const;
+
+export type WorkedCompanyKey =
+  (typeof WORKED_COMPANY_LOGOS)[number]["companyKey"];
+
+export type { WorkArrangement, WorkedCompanyDetail } from "@/lib/companies/types";
+
+/** Per-company copy lives in `lib/companies/<slug>.ts`. */
+export { WORKED_COMPANY_DETAILS } from "@/lib/companies";

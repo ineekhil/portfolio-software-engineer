@@ -1,19 +1,20 @@
 "use client";
 
-import { ArrowRight, Sparkle } from "@phosphor-icons/react";
+import { Code, FolderOpen, Plus, Sparkle, Stack } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
 import {
-  CONTACT_EMAIL,
+  HOME_HERO_RECENT_PROJECTS,
+  HOME_HERO_RECENT_TECH,
+  HOME_HERO_SKILLS,
   SITE_BIO,
   SITE_NAME,
   SITE_TAGLINE,
-  VILLAIN_PROFILE_IMAGE_URL,
+  VILLAIN_PROFILE_IMAGE,
 } from "@/lib/constants";
 import {
   companiesHoverOrder,
@@ -127,7 +128,7 @@ export function Villain() {
                 <div className="group-hover:outline-accent rounded-full outline outline-2 outline-offset-[6px] outline-transparent transition-[transform,outline-color,outline-style] duration-300 ease-out group-hover:scale-[1.03] group-hover:outline-dashed">
                   <div className="border-border bg-surface-muted relative size-28 shrink-0 overflow-hidden rounded-full border-2 shadow-md ring-2 ring-black/5 sm:size-32 dark:ring-white/10">
                     <Image
-                      src={VILLAIN_PROFILE_IMAGE_URL}
+                      src={VILLAIN_PROFILE_IMAGE}
                       alt={`${SITE_NAME} profile photo`}
                       width={400}
                       height={400}
@@ -139,8 +140,11 @@ export function Villain() {
                 </div>
                 <span
                   className={cn(
-                    "border-border bg-background/95 text-foreground pointer-events-none absolute top-0 left-full z-10 ml-1 -translate-y-2 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-md backdrop-blur-sm transition-opacity duration-200 ease-out sm:ml-1.5 sm:-translate-y-2.5",
-                    "max-md:-translate-x-6 max-md:ml-0.5 md:-translate-x-2.5 md:ml-1",
+                    "border-border bg-background/95 text-foreground pointer-events-none absolute top-0 left-full z-10 ml-2.5 -translate-y-2 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-md backdrop-blur-sm transition-[opacity,margin,transform] duration-200 ease-out sm:ml-3 sm:-translate-y-2.5",
+                    "max-md:-translate-x-6 max-md:ml-2",
+                    isProfileHovering
+                      ? "md:-translate-x-2.5 md:ml-1 lg:ml-0.5"
+                      : "md:-translate-x-4 md:ml-0 lg:-translate-x-5 lg:ml-0",
                     "opacity-0",
                     showProfileTooltip && "opacity-100",
                   )}
@@ -198,37 +202,104 @@ export function Villain() {
             </h1>
             <p
               className="text-muted mx-auto mt-5 w-full max-w-4xl text-lg leading-relaxed sm:text-xl md:line-clamp-3 md:leading-snug"
-              title={SITE_BIO}
             >
               {SITE_BIO}
             </p>
           </div>
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-            <ButtonLink
-              href="/projects"
-              variant="primary"
-              className="min-w-[160px]"
-            >
-              View projects
-              <ArrowRight className="size-4" weight="bold" aria-hidden />
-            </ButtonLink>
-            <ButtonLink
-              href="/contact"
-              variant="secondary"
-              className="min-w-[160px]"
-            >
-              Get in touch
-            </ButtonLink>
+          <div className="text-foreground mx-auto mt-12 w-full max-w-4xl text-left">
+            <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
+              <div className="text-center">
+                <div className="flex flex-col items-center gap-2">
+                  <Stack
+                    className="text-accent size-8 shrink-0"
+                    weight="duotone"
+                    aria-hidden
+                  />
+                  <h2 className="text-accent text-xs font-semibold tracking-wide">
+                    Skills
+                  </h2>
+                </div>
+                <ul className="mt-3 flex flex-wrap justify-center gap-2">
+                  {HOME_HERO_SKILLS.map((item) => (
+                    <li key={item}>
+                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      href="/skills"
+                      className="border-border text-muted hover:border-accent/50 hover:text-accent bg-background/80 inline-flex size-4 items-center justify-center rounded-full border border-dashed transition-colors"
+                      aria-label="More skills"
+                    >
+                      <Plus className="size-2.5" weight="bold" aria-hidden />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <div className="flex flex-col items-center gap-2">
+                  <Code
+                    className="text-accent size-8 shrink-0"
+                    weight="duotone"
+                    aria-hidden
+                  />
+                  <h2 className="text-accent text-xs font-semibold tracking-wide">
+                    Recent Technology
+                  </h2>
+                </div>
+                <ul className="mt-3 flex flex-wrap justify-center gap-2">
+                  {HOME_HERO_RECENT_TECH.map((item) => (
+                    <li key={item}>
+                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      href="/skills"
+                      className="border-border text-muted hover:border-accent/50 hover:text-accent bg-background/80 inline-flex size-4 items-center justify-center rounded-full border border-dashed transition-colors"
+                      aria-label="More technologies"
+                    >
+                      <Plus className="size-2.5" weight="bold" aria-hidden />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <div className="flex flex-col items-center gap-2">
+                  <FolderOpen
+                    className="text-accent size-8 shrink-0"
+                    weight="duotone"
+                    aria-hidden
+                  />
+                  <h2 className="text-accent text-xs font-semibold tracking-wide">
+                    Projects
+                  </h2>
+                </div>
+                <ul className="mt-3 flex flex-wrap justify-center gap-2">
+                  {HOME_HERO_RECENT_PROJECTS.map((title) => (
+                    <li key={title}>
+                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
+                        {title}
+                      </span>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      href="/projects"
+                      className="border-border text-muted hover:border-accent/50 hover:text-accent bg-background/80 inline-flex size-4 items-center justify-center rounded-full border border-dashed transition-colors"
+                      aria-label="More projects"
+                    >
+                      <Plus className="size-2.5" weight="bold" aria-hidden />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <p className="text-muted mt-8 text-sm">
-            Prefer email?{" "}
-            <Link
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="text-accent font-medium underline-offset-4 hover:underline"
-            >
-              {CONTACT_EMAIL}
-            </Link>
-          </p>
         </div>
       </Container>
     </section>

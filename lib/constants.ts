@@ -16,9 +16,8 @@ export const CONTACT_EMAIL = "i.neekhil@gmail.com";
 export const SITE_DESCRIPTION =
   "Software Engineer with 3 years in React, Android, and QA Automation. Scalable solutions, CI/CD, testing, and user-centric applications.";
 
-/** Villain section profile photo (LinkedIn CDN — allow `media.licdn.com` in `next.config.ts`). */
-export const VILLAIN_PROFILE_IMAGE_URL =
-  "https://media.licdn.com/dms/image/v2/D4D03AQG3LcaATal0gg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718894767709?e=1776902400&v=beta&t=RXbI8FusAUU71Y-9lMrAvdYq6BonY--y93-F8n7zamE";
+/** Villain section profile photo — `public/profile.png`. */
+export const VILLAIN_PROFILE_IMAGE = "/profile.png" as const;
 
 /** Shown when the header search is focused — click runs a search with `query`. */
 export const SEARCH_HINTS: { label: string; query: string }[] = [
@@ -83,3 +82,28 @@ export const ALL_PROJECTS: Project[] = [
     sourceHref: "#",
   },
 ];
+
+/** Home hero (below bio): recent stack, project names, skills — edit to match you. */
+export const HOME_HERO_RECENT_TECH = [
+  "React Native",
+  "Node.js",
+  "Next.js",
+  "TypeScript",
+  "Express.js",
+  "MongoDB",
+  "Git",
+  "DevOps",
+] as const;
+
+export const HOME_HERO_RECENT_PROJECTS = [
+  "Design system starter",
+  "Analytics dashboard",
+  "API toolkit",
+] as const;
+
+export const HOME_HERO_SKILLS = [
+  "Frontend",
+  "Backend",
+  "DevOps",
+  "Database",
+] as const;
