@@ -1,9 +1,15 @@
 "use client";
 
-import { ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
+import {
+  ArrowSquareOut,
+  Code,
+  GithubLogo,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 
 import type { Project } from "@/types";
+import { TechIcon } from "@/components/ui/tech-icon";
+import { techIconSlugForLabel } from "@/lib/tech-icons";
 import { cn } from "@/lib/utils";
 
 type ProjectCardProps = {
@@ -16,15 +22,31 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 
   const content = (
     <>
-      <div className="flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="bg-surface-muted text-muted rounded-md px-2 py-0.5 text-xs font-medium"
-          >
-            {tag}
-          </span>
-        ))}
+      <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
+        {tags.map((tag) => {
+          const iconSlug = techIconSlugForLabel(tag);
+          return (
+            <span
+              key={tag}
+              className="bg-surface-muted flex w-[4.5rem] flex-col items-center gap-1.5 rounded-lg px-2 py-2"
+            >
+              <span className="inline-flex size-11 items-center justify-center">
+                {iconSlug ? (
+                  <TechIcon slug={iconSlug} size={36} />
+                ) : (
+                  <Code
+                    className="text-muted size-8 shrink-0 opacity-90"
+                    weight="duotone"
+                    aria-hidden
+                  />
+                )}
+              </span>
+              <span className="text-muted text-center text-[10px] leading-tight font-medium text-balance">
+                {tag}
+              </span>
+            </span>
+          );
+        })}
       </div>
       <h3 className="text-foreground mt-4 text-lg font-semibold tracking-tight">
         {title}

@@ -6,7 +6,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/ui/container";
+import { TechIcon } from "@/components/ui/tech-icon";
 import { cn } from "@/lib/utils";
+import { techIconSlugForLabel } from "@/lib/tech-icons";
 import {
   HOME_HERO_RECENT_PROJECTS,
   HOME_HERO_RECENT_TECH,
@@ -206,7 +208,7 @@ export function Villain() {
               {SITE_BIO}
             </p>
           </div>
-          <div className="text-foreground mx-auto mt-12 w-full max-w-4xl text-left">
+          <div className="text-foreground mx-auto mt-12 w-full max-w-4xl text-center sm:text-left">
             <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
               <div className="text-center">
                 <div className="flex flex-col items-center gap-2">
@@ -219,14 +221,32 @@ export function Villain() {
                     Skills
                   </h2>
                 </div>
-                <ul className="mt-3 flex flex-wrap justify-center gap-2">
-                  {HOME_HERO_SKILLS.map((item) => (
-                    <li key={item}>
-                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
+                <ul className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-4">
+                  {HOME_HERO_SKILLS.map((item) => {
+                    const iconSlug = techIconSlugForLabel(item);
+                    return (
+                      <li
+                        key={item}
+                        className="flex w-[4.25rem] flex-col items-center gap-1.5"
+                      >
+                        <span className="border-border bg-background/80 inline-flex size-12 items-center justify-center rounded-full border shadow-sm">
+                          {iconSlug ? (
+                            <TechIcon slug={iconSlug} size={32} />
+                          ) : (
+                            <span
+                              className="text-muted text-xs font-semibold"
+                              aria-hidden
+                            >
+                              ?
+                            </span>
+                          )}
+                        </span>
+                        <span className="text-muted max-w-[4.25rem] text-center text-[10px] leading-tight font-medium text-balance">
+                          {item}
+                        </span>
+                      </li>
+                    );
+                  })}
                   <li>
                     <Link
                       href="/skills"
@@ -249,14 +269,32 @@ export function Villain() {
                     Recent Technology
                   </h2>
                 </div>
-                <ul className="mt-3 flex flex-wrap justify-center gap-2">
-                  {HOME_HERO_RECENT_TECH.map((item) => (
-                    <li key={item}>
-                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
+                <ul className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-4">
+                  {HOME_HERO_RECENT_TECH.map((item) => {
+                    const iconSlug = techIconSlugForLabel(item);
+                    return (
+                      <li
+                        key={item}
+                        className="flex w-[4.25rem] flex-col items-center gap-1.5"
+                      >
+                        <span className="border-border bg-background/80 inline-flex size-12 items-center justify-center rounded-full border shadow-sm">
+                          {iconSlug ? (
+                            <TechIcon slug={iconSlug} size={32} />
+                          ) : (
+                            <span
+                              className="text-muted text-xs font-semibold"
+                              aria-hidden
+                            >
+                              ?
+                            </span>
+                          )}
+                        </span>
+                        <span className="text-muted max-w-[4.25rem] text-center text-[10px] leading-tight font-medium text-balance">
+                          {item}
+                        </span>
+                      </li>
+                    );
+                  })}
                   <li>
                     <Link
                       href="/skills"

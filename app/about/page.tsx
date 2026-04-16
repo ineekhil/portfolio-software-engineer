@@ -15,13 +15,15 @@ export default function AboutPage() {
     <Section className="pt-12 sm:pt-16">
       <Container>
         <div className="mx-auto max-w-3xl">
-          <p className="text-accent text-sm font-medium tracking-wider uppercase">
+          <p className="text-accent text-center text-sm font-medium tracking-wider uppercase sm:text-left">
             About
           </p>
-          <h1 className="text-foreground mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 className="text-foreground mt-2 text-center text-4xl font-semibold tracking-tight sm:text-left sm:text-5xl">
             Hi, I&apos;m {SITE_NAME}
           </h1>
-          <p className="text-muted mt-6 text-lg leading-relaxed">{SITE_BIO}</p>
+          <p className="text-muted mt-6 text-center text-lg leading-relaxed sm:text-left">
+            {SITE_BIO}
+          </p>
 
           <AboutSkills />
         </div>

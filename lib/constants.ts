@@ -101,9 +101,31 @@ export const HOME_HERO_RECENT_PROJECTS = [
   "API toolkit",
 ] as const;
 
-export const HOME_HERO_SKILLS = [
-  "Frontend",
-  "Backend",
-  "DevOps",
-  "Database",
+/** Skills page and home hero — four pillars in this order. */
+export const SKILL_CATEGORIES = [
+  {
+    title: "Frontend",
+    items: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    title: "Backend",
+    items: ["Node.js", "Express.js", "REST APIs"],
+  },
+  {
+    title: "Database",
+    items: ["MongoDB"],
+  },
+  {
+    title: "DevOps",
+    items: ["Git", "CI/CD", "Cloud deployments"],
+  },
 ] as const;
+
+export const HOME_HERO_SKILLS = SKILL_CATEGORIES.map(
+  (c) => c.title,
+) as readonly string[];

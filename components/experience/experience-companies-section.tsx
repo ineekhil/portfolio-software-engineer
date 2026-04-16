@@ -4,20 +4,11 @@ import Image from "next/image";
 import {
   Briefcase,
   ClipboardText,
-  DeviceMobile,
-  Globe,
   Images,
   MapPin,
   UsersThree,
 } from "@phosphor-icons/react";
-import {
-  Fragment,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { CompanyLogoMark } from "@/components/company-logo-mark";
 import { ViralFissionLogo } from "@/components/logos/viral-fission-logo";
@@ -140,7 +131,7 @@ function CompanyLogosWave({
       onPointerLeave={onPointerLeave}
       onPointerCancel={onPointerLeave}
     >
-      <div className="-mx-1 flex justify-center overflow-x-auto px-1 pt-10 pb-6 [scrollbar-gutter:stable] sm:justify-start">
+      <div className="-mx-1 overflow-x-auto px-1 pt-10 pb-6 [scrollbar-gutter:stable]">
         <ul className="flex w-max max-w-none flex-nowrap gap-1.5 overflow-visible px-2 sm:gap-2 sm:px-3">
           {items.map((item, index) => {
             const scale = reduceMotion ? MIN_SCALE : scales[index] ?? MIN_SCALE;
@@ -231,7 +222,7 @@ export function ExperienceCompaniesSection() {
 
   return (
     <>
-      <div className="border-border bg-surface-muted/40 mt-10 w-full overflow-visible rounded-3xl border px-5 py-4 text-center sm:px-6 sm:py-5 sm:text-left lg:px-8 lg:py-5">
+      <div className="border-border bg-surface-muted/40 mt-10 w-full overflow-visible rounded-3xl border px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5">
         <p className="text-muted text-xs font-medium tracking-wide uppercase">
           Companies
         </p>
@@ -243,14 +234,14 @@ export function ExperienceCompaniesSection() {
       </div>
 
       {selectedKey == null ? (
-        <p className="text-muted mt-6 text-center text-sm leading-relaxed sm:text-left">
+        <p className="text-muted mt-6 text-sm leading-relaxed">
           {messages.experiencePage.selectCompanyHint}
         </p>
       ) : null}
 
       {detail && companyName && selectedKey != null ? (
         <div
-          className="mt-8 w-full space-y-8 text-left"
+          className="mt-8 w-full space-y-8"
           role="region"
           aria-labelledby="company-detail-heading"
         >
@@ -276,18 +267,7 @@ export function ExperienceCompaniesSection() {
                   <span className="text-muted font-medium">
                     {messages.experiencePage.location}
                   </span>{" "}
-                  {detail.locationMapUrl ? (
-                    <a
-                      href={detail.locationMapUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent underline-offset-4 hover:underline"
-                    >
-                      {detail.location}
-                    </a>
-                  ) : (
-                    detail.location
-                  )}
+                  {detail.location}
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -301,71 +281,6 @@ export function ExperienceCompaniesSection() {
                   {detail.workArrangement}
                 </p>
               </div>
-              {detail.mobileApp ? (
-                <div className="flex w-full basis-full items-start gap-3 sm:items-center">
-                  <span className="text-accent mt-0.5 inline-flex shrink-0 sm:mt-0">
-                    <DeviceMobile
-                      className="size-5"
-                      weight="duotone"
-                      aria-hidden
-                    />
-                  </span>
-                  <p className="text-foreground text-sm leading-relaxed">
-                    <span className="text-muted font-medium">
-                      {messages.experiencePage.mobileApp}:
-                    </span>{" "}
-                    <span className="font-medium">{detail.mobileApp.name}</span>
-                    {" — "}
-                    <a
-                      href={detail.mobileApp.playStoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent underline-offset-4 hover:underline"
-                    >
-                      {messages.experiencePage.googlePlay}
-                    </a>
-                    <span className="text-muted"> · </span>
-                    <a
-                      href={detail.mobileApp.appStoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent underline-offset-4 hover:underline"
-                    >
-                      {messages.experiencePage.appStore}
-                    </a>
-                  </p>
-                </div>
-              ) : null}
-              {detail.webLinks && detail.webLinks.length > 0 ? (
-                <div className="flex w-full basis-full items-start gap-3 sm:items-center">
-                  <span className="text-accent mt-0.5 inline-flex shrink-0 sm:mt-0">
-                    <Globe className="size-5" weight="duotone" aria-hidden />
-                  </span>
-                  <p className="text-foreground text-sm leading-relaxed">
-                    <span className="text-muted font-medium">
-                      {messages.experiencePage.webLinks}:
-                    </span>{" "}
-                    {detail.webLinks.map((link, i) => (
-                      <Fragment key={link.href}>
-                        {i > 0 ? (
-                          <span className="text-muted" aria-hidden>
-                            {" "}
-                            ·{" "}
-                          </span>
-                        ) : null}
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-accent underline-offset-4 hover:underline"
-                        >
-                          {link.label}
-                        </a>
-                      </Fragment>
-                    ))}
-                  </p>
-                </div>
-              ) : null}
             </div>
           </div>
 
@@ -421,17 +336,7 @@ export function ExperienceCompaniesSection() {
               {detail.workDetails.map((block) => (
                 <div key={`${selectedKey}-wd-${block.roleTitle}`}>
                   <p className="text-foreground font-medium">{block.roleTitle}</p>
-                  {block.technologies && block.technologies.length > 0 ? (
-                    <p className="text-foreground/90 mt-2 text-sm leading-relaxed">
-                      <span className="text-foreground font-medium">
-                        {messages.experiencePage.technologies}
-                      </span>{" "}
-                      <span className="text-foreground/90">
-                        {block.technologies.join(", ")}
-                      </span>
-                    </p>
-                  ) : null}
-                  <ul className="text-foreground/90 mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed">
+                  <ul className="text-foreground/90 mt-2 list-disc space-y-2 pl-5 text-base leading-relaxed">
                     {block.bullets.map((line, i) => (
                       <li key={`${selectedKey}-wd-${block.roleTitle}-${i}`}>
                         {line}
@@ -468,10 +373,6 @@ export function ExperienceCompaniesSection() {
                       fill
                       sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
                       className="object-cover"
-                      unoptimized={
-                        photo.src.includes("drive.google.com") ||
-                        photo.src.includes("googleusercontent.com")
-                      }
                     />
                   </li>
                 ))}
