@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { TechIcon } from "@/components/ui/tech-icon";
 import { SITE_NAME, SKILL_CATEGORIES } from "@/lib/constants";
-import { techIconSlugForLabel } from "@/lib/tech-icons";
+import { techIconAssetForLabel } from "@/lib/tech-icons";
 
 export const metadata: Metadata = {
   title: "Skills",
@@ -23,8 +23,8 @@ export default function SkillsPage() {
             What I work with
           </h1>
           <p className="text-muted mt-6 text-center text-lg leading-relaxed sm:text-left">
-            Stack grouped by Frontend, Backend, Database, and DevOps — the same
-            pillars highlighted on the home page.
+            Stack grouped by Frontend, Backend, Database, DevOps, and Testing
+            — the same pillars highlighted on the home page.
           </p>
           <div className="mt-14 space-y-12">
             {SKILL_CATEGORIES.map((category) => (
@@ -37,15 +37,19 @@ export default function SkillsPage() {
                 </h2>
                 <ul className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-5 sm:justify-start">
                   {category.items.map((item) => {
-                    const iconSlug = techIconSlugForLabel(item);
+                    const icon = techIconAssetForLabel(item);
                     return (
                       <li
                         key={item}
                         className="flex w-[5.75rem] flex-col items-center gap-2 sm:w-24"
                       >
                         <span className="border-border bg-background/80 inline-flex size-16 items-center justify-center rounded-2xl border shadow-sm sm:size-[4.5rem]">
-                          {iconSlug ? (
-                            <TechIcon slug={iconSlug} size={48} />
+                          {icon ? (
+                            <TechIcon
+                              slug={icon.slug}
+                              variant={icon.variant}
+                              size={48}
+                            />
                           ) : (
                             <span
                               className="text-muted text-sm font-semibold tracking-tight"

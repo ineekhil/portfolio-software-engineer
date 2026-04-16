@@ -24,6 +24,9 @@ const LABEL_SLUG: Record<string, string> = {
   git: "git",
   "ci/cd": "githubactions",
   "cloud deployments": "googlecloud",
+  jest: "jest",
+  cypress: "cypressio",
+  selenium: "selenium",
 
   // HOME_HERO_RECENT_TECH
   "react native": "reactnative",
@@ -33,6 +36,7 @@ const LABEL_SLUG: Record<string, string> = {
   frontend: "react",
   backend: "nodejs",
   database: "mongodb",
+  testing: "jest",
 
   // Project / generic tags
   tailwind: "tailwindcss",
@@ -42,11 +46,24 @@ const LABEL_SLUG: Record<string, string> = {
   "data viz": "chartjs",
 };
 
+/** Per-label SVG variant (default `original`). */
+const LABEL_VARIANT: Record<string, string> = {
+  jest: "plain",
+};
+
 function normalizeLabel(label: string): string {
   return label.trim().toLowerCase();
 }
 
+export type TechIconAsset = { slug: string; variant: string };
+
+export function techIconAssetForLabel(label: string): TechIconAsset | null {
+  const key = normalizeLabel(label);
+  const slug = LABEL_SLUG[key];
+  if (!slug) return null;
+  return { slug, variant: LABEL_VARIANT[key] ?? "original" };
+}
+
 export function techIconSlugForLabel(label: string): string | null {
-  const slug = LABEL_SLUG[normalizeLabel(label)];
-  return slug ?? null;
+  return techIconAssetForLabel(label)?.slug ?? null;
 }

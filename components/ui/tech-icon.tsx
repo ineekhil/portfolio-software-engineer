@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 
 type TechIconProps = {
   slug: string;
+  /** Devicon file suffix, e.g. `original`, `plain`. */
+  variant?: string;
   size?: number;
   className?: string;
   /** Shown as tooltip and exposed to assistive tech when the icon has no visible caption. */
@@ -12,10 +14,16 @@ type TechIconProps = {
 };
 
 /** Colored devicon SVG (TechIcons / devicon set). */
-export function TechIcon({ slug, size = 20, className, label }: TechIconProps) {
+export function TechIcon({
+  slug,
+  variant = "original",
+  size = 20,
+  className,
+  label,
+}: TechIconProps) {
   const image = (
     <Image
-      src={deviconSvgUrl(slug)}
+      src={deviconSvgUrl(slug, variant)}
       alt=""
       width={size}
       height={size}

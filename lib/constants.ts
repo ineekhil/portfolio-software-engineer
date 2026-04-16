@@ -93,6 +93,7 @@ export const HOME_HERO_RECENT_TECH = [
   "MongoDB",
   "Git",
   "DevOps",
+  "Jest",
 ] as const;
 
 export const HOME_HERO_RECENT_PROJECTS = [
@@ -123,6 +124,10 @@ export const SKILL_CATEGORIES = [
   {
     title: "DevOps",
     items: ["Git", "CI/CD", "Cloud deployments"],
+  },
+  {
+    title: "Testing",
+    items: ["Jest", "Cypress", "Selenium"],
   },
 ] as const;
 

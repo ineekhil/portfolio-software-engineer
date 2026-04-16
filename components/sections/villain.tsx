@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/container";
 import { TechIcon } from "@/components/ui/tech-icon";
 import { cn } from "@/lib/utils";
-import { techIconSlugForLabel } from "@/lib/tech-icons";
+import { techIconAssetForLabel } from "@/lib/tech-icons";
 import {
   HOME_HERO_RECENT_PROJECTS,
   HOME_HERO_RECENT_TECH,
@@ -223,15 +223,19 @@ export function Villain() {
                 </div>
                 <ul className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-4">
                   {HOME_HERO_SKILLS.map((item) => {
-                    const iconSlug = techIconSlugForLabel(item);
+                    const icon = techIconAssetForLabel(item);
                     return (
                       <li
                         key={item}
                         className="flex w-[4.25rem] flex-col items-center gap-1.5"
                       >
                         <span className="border-border bg-background/80 inline-flex size-12 items-center justify-center rounded-full border shadow-sm">
-                          {iconSlug ? (
-                            <TechIcon slug={iconSlug} size={32} />
+                          {icon ? (
+                            <TechIcon
+                              slug={icon.slug}
+                              variant={icon.variant}
+                              size={32}
+                            />
                           ) : (
                             <span
                               className="text-muted text-xs font-semibold"
@@ -271,15 +275,19 @@ export function Villain() {
                 </div>
                 <ul className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-4">
                   {HOME_HERO_RECENT_TECH.map((item) => {
-                    const iconSlug = techIconSlugForLabel(item);
+                    const icon = techIconAssetForLabel(item);
                     return (
                       <li
                         key={item}
                         className="flex w-[4.25rem] flex-col items-center gap-1.5"
                       >
                         <span className="border-border bg-background/80 inline-flex size-12 items-center justify-center rounded-full border shadow-sm">
-                          {iconSlug ? (
-                            <TechIcon slug={iconSlug} size={32} />
+                          {icon ? (
+                            <TechIcon
+                              slug={icon.slug}
+                              variant={icon.variant}
+                              size={32}
+                            />
                           ) : (
                             <span
                               className="text-muted text-xs font-semibold"
