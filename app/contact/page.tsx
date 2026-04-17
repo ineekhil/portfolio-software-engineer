@@ -14,12 +14,12 @@ export default function ContactPage() {
   return (
     <Section className="pt-12 sm:pt-16">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <p className="text-accent text-sm font-medium tracking-wider uppercase">
               Contact
             </p>
-            <h1 className="text-foreground mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">
+            <h1 className="text-foreground mt-2 text-[clamp(1.875rem,4vw+1rem,3rem)] font-semibold tracking-tight sm:text-5xl">
               Let&apos;s talk
             </h1>
             <p className="text-muted mt-4 text-lg">

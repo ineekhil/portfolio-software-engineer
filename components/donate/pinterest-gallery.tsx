@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function PinterestGallery() {
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-6 sm:px-6">
+    <div className="mx-auto w-full max-w-5xl pt-6 pb-[max(4rem,env(safe-area-inset-bottom,0px))] pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] sm:pl-[max(1.5rem,env(safe-area-inset-left,0px))] sm:pr-[max(1.5rem,env(safe-area-inset-right,0px))] md:pl-[max(2rem,env(safe-area-inset-left,0px))] md:pr-[max(2rem,env(safe-area-inset-right,0px))]">
       <p className="text-muted mx-auto mb-2 max-w-2xl text-center text-sm sm:text-base">
         Spread love by doing this; don&apos;t donate to me — I am earning good
         by God&apos;s grace.
@@ -39,12 +39,12 @@ export function PinterestGallery() {
                 alt=""
                 width={card.width}
                 height={card.height}
-                sizes="(max-width: 640px) 100vw, 33vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className={cn(
                   "h-auto w-full object-cover transition-transform duration-500 ease-out",
                   "group-hover:scale-105",
                 )}
-                priority={index < 3}
+                priority={index === 0}
               />
               <div
                 className={cn(

@@ -64,9 +64,27 @@ export function Navbar() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => {
+      if (mq.matches) setOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   return (
-    <header className="border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between gap-3">
+    <header className="border-border bg-background/80 sticky top-0 z-50 border-b pt-[env(safe-area-inset-top,0px)] backdrop-blur-md">
+      <Container className="flex h-16 items-center justify-between gap-2 sm:gap-3">
         <Link
           href="/"
           className="text-foreground flex shrink-0 items-center gap-2 text-lg font-semibold tracking-tight transition-opacity hover:opacity-80"
@@ -80,7 +98,7 @@ export function Navbar() {
         </Link>
 
         <nav
-          className="text-muted hidden items-center gap-0.5 md:flex"
+          className="text-muted hidden items-center gap-0.5 lg:flex"
           aria-label="Main"
         >
           {NAV_ITEMS.map(({ href, label }) => {
@@ -142,15 +160,15 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 md:max-w-none md:flex-none md:gap-3">
-          <div className="hidden max-w-md min-w-0 flex-1 items-center gap-3 md:flex">
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 lg:max-w-none lg:flex-none lg:gap-3">
+          <div className="hidden max-w-md min-w-0 flex-1 items-center gap-3 lg:flex">
             <ThemeToggle className="shrink-0 rounded-full" />
             <HeaderSearch className="max-w-[min(100%,40rem)]" />
             <HeaderSocial />
             <HeaderDecorIcons />
           </div>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
             <HeaderDecorIcons onNavigate={() => setOpen(false)} />
             <IconTooltip label="resume" side="bottom" preserveCase>
               <Link
@@ -203,7 +221,7 @@ export function Navbar() {
       {open ? (
         <div
           id="mobile-nav"
-          className="border-border bg-background max-h-[min(85vh,calc(100dvh-4rem))] overflow-y-auto border-t md:hidden"
+          className="border-border bg-background max-h-[min(85vh,calc(100dvh-4rem-env(safe-area-inset-top,0px)))] overflow-y-auto overscroll-contain border-t lg:hidden"
         >
           <Container className="flex flex-col gap-4 py-4">
             <nav className="flex flex-col gap-1" aria-label="Mobile main">

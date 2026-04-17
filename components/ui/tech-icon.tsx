@@ -27,6 +27,7 @@ export function TechIcon({
       alt=""
       width={size}
       height={size}
+      sizes={`${size}px`}
       className={cn("shrink-0 object-contain", className)}
       unoptimized
     />

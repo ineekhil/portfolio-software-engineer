@@ -19,12 +19,12 @@ export default function SkillsPage() {
           <p className="text-accent text-center text-sm font-medium tracking-wider uppercase sm:text-left">
             Skills
           </p>
-          <h1 className="text-foreground mt-2 text-center text-4xl font-semibold tracking-tight sm:text-left sm:text-5xl">
+          <h1 className="text-foreground mt-2 text-center text-[clamp(1.875rem,4vw+1rem,3rem)] font-semibold tracking-tight sm:text-left sm:text-5xl">
             What I work with
           </h1>
-          <p className="text-muted mt-6 text-center text-lg leading-relaxed sm:text-left">
-            Stack grouped by Frontend, Mobile, Backend, Database, DevOps, and
-            Testing — the same pillars highlighted on the home page.
+          <p className="text-muted mt-6 text-center text-base leading-relaxed sm:text-left sm:text-lg">
+            Stack grouped by the same pillars as on the home page — from UI to
+            infrastructure and quality.
           </p>
           <div className="mt-14 space-y-12">
             {SKILL_CATEGORIES.map((category) => (

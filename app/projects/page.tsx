@@ -51,7 +51,7 @@ export default async function ProjectsPage({
             </p>
           ) : null}
         </div>
-        <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {projects.map((project) => (
             <li key={project.id}>
               <ProjectCard project={project} className="h-full" />

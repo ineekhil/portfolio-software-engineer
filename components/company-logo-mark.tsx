@@ -59,6 +59,7 @@ export function CompanyLogoMark({
       role="presentation"
       width={160}
       height={160}
+      sizes="(max-width: 640px) 3rem, 4rem"
       className={cn(
         "border-border shrink-0 border bg-white object-contain p-1 shadow-sm dark:bg-neutral-950",
         box,

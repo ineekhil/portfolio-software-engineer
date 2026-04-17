@@ -4,7 +4,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 const baseStyles =
-  "inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-medium transition-colors sm:py-2.5 min-h-11 min-w-11 sm:min-h-10 sm:min-w-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50";
 
 const variants = {
   primary:
@@ -12,7 +12,7 @@ const variants = {
   secondary:
     "border border-border bg-surface-muted text-foreground hover:bg-surface-elevated",
   ghost: "text-foreground hover:bg-surface-muted",
-  link: "text-accent underline-offset-4 hover:underline px-0 py-0",
+  link: "text-accent underline-offset-4 hover:underline min-h-0 min-w-0 px-0 py-0",
 } as const;
 
 type Variant = keyof typeof variants;

@@ -55,7 +55,7 @@ export function HeaderSearch({ className, inputClassName }: HeaderSearchProps) {
   return (
     <div
       ref={wrapRef}
-      className={cn("relative min-w-0 flex-1 md:max-w-[40rem]", className)}
+      className={cn("relative min-w-0 flex-1 lg:max-w-[40rem]", className)}
     >
       <form onSubmit={handleSubmit} className="relative" role="search">
         <MagnifyingGlass
@@ -86,7 +86,7 @@ export function HeaderSearch({ className, inputClassName }: HeaderSearchProps) {
           id="search-hints"
           role="listbox"
           aria-label="Search suggestions"
-          className="border-border/60 bg-background/35 ring-border/40 absolute top-full left-0 z-[60] mt-1.5 w-[min(100%,40rem)] overflow-hidden rounded-lg border py-0.5 shadow-lg ring-1 shadow-black/5 backdrop-blur-xl dark:bg-background/30 dark:shadow-black/30"
+          className="border-border/60 bg-background/35 ring-border/40 absolute top-full right-0 left-0 z-[60] mt-1.5 w-full max-w-[40rem] overflow-hidden rounded-lg border py-0.5 shadow-lg ring-1 shadow-black/5 backdrop-blur-xl sm:left-0 sm:right-auto sm:w-[min(100%,40rem)] dark:bg-background/30 dark:shadow-black/30"
         >
           <ul className="max-h-40 overflow-y-auto py-0.5">
             {SEARCH_HINTS.map((hint) => (

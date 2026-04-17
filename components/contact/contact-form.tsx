@@ -52,7 +52,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-border bg-background space-y-6 rounded-2xl border p-6 shadow-sm sm:p-8"
+      className="border-border bg-background space-y-5 rounded-2xl border p-5 shadow-sm sm:space-y-6 sm:p-8"
       noValidate
     >
       <div>
@@ -71,7 +71,7 @@ export function ContactForm() {
           value={values.name}
           onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
           className={cn(
-            "border-border bg-surface-muted text-foreground placeholder:text-muted mt-2 w-full rounded-lg border px-3 py-2.5 text-sm",
+            "border-border bg-surface-muted text-foreground placeholder:text-muted mt-2 min-h-11 w-full rounded-lg border px-3 py-2.5 text-sm sm:min-h-0",
             "focus:border-accent focus:ring-ring/30 focus:ring-2 focus:outline-none",
           )}
           placeholder="Your name"
@@ -93,7 +93,7 @@ export function ContactForm() {
           value={values.email}
           onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
           className={cn(
-            "border-border bg-surface-muted text-foreground placeholder:text-muted mt-2 w-full rounded-lg border px-3 py-2.5 text-sm",
+            "border-border bg-surface-muted text-foreground placeholder:text-muted mt-2 min-h-11 w-full rounded-lg border px-3 py-2.5 text-sm sm:min-h-0",
             "focus:border-accent focus:ring-ring/30 focus:ring-2 focus:outline-none",
           )}
           placeholder="you@example.com"

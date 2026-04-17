@@ -18,10 +18,10 @@ export default function HomePage() {
         <Container>
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
             <div className="max-w-xl">
-              <h2 className="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl">
+              <h2 className="text-foreground text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
                 Featured work
               </h2>
-              <p className="text-muted mt-3 text-lg">
+              <p className="text-muted mt-3 text-base sm:text-lg">
                 A few representative projects. Replace with your own case
                 studies.
               </p>
@@ -30,7 +30,7 @@ export default function HomePage() {
               All projects
             </ButtonLink>
           </div>
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2">
+          <ul className="mt-12 grid gap-6 sm:grid-cols-2 sm:gap-8">
             {FEATURED_PROJECTS.map((project) => (
               <li key={project.id}>
                 <ProjectCard project={project} />
@@ -42,8 +42,8 @@ export default function HomePage() {
 
       <Section>
         <Container>
-          <div className="border-border from-accent/10 mx-auto max-w-2xl rounded-3xl border bg-gradient-to-br to-transparent p-8 text-center sm:p-12">
-            <h2 className="text-foreground text-2xl font-semibold tracking-tight sm:text-3xl">
+          <div className="border-border from-accent/10 mx-auto max-w-2xl rounded-3xl border bg-gradient-to-br to-transparent p-6 text-center sm:p-10 md:p-12">
+            <h2 className="text-foreground text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
               Let&apos;s build something great
             </h2>
             <p className="text-muted mt-3">

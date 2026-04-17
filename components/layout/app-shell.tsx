@@ -10,7 +10,7 @@ type AppShellProps = {
 
 export function AppShell({ children }: AppShellProps) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen w-full max-w-full flex-col overflow-x-hidden">
       <Navbar />
       <div className="relative flex min-h-0 flex-1 flex-col">
         <div
@@ -19,7 +19,7 @@ export function AppShell({ children }: AppShellProps) {
         >
           <TechDoodleBackground />
         </div>
-        <main className="relative z-[1] flex flex-1 flex-col bg-transparent">
+        <main className="relative z-[1] flex min-h-0 min-w-0 flex-1 flex-col overflow-x-hidden bg-transparent">
           {children}
         </main>
       </div>

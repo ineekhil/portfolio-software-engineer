@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function WhitePlacePage() {
   return (
     <div
-      className="bg-background relative flex min-h-[calc(100dvh-4rem)] w-full flex-col overflow-hidden"
+      className="bg-background relative flex min-h-[calc(100dvh-4rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] w-full min-w-0 flex-col overflow-hidden"
       aria-label="White place"
     >
       <div

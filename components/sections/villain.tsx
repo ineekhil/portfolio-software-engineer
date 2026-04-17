@@ -105,7 +105,7 @@ export function Villain() {
   return (
     <section
       ref={sectionRef}
-      className="border-border relative overflow-visible border-b bg-gradient-to-b from-surface-muted/35 via-background/55 to-background/80 pt-16 pb-20 sm:pt-20 sm:pb-28 lg:pt-28 lg:pb-32"
+      className="border-border relative overflow-visible border-b bg-gradient-to-b from-surface-muted/35 via-background/55 to-background/80 pt-14 pb-16 sm:pt-20 sm:pb-24 md:pb-28 lg:pt-28 lg:pb-32"
     >
       <div
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden opacity-40 dark:opacity-25"
@@ -172,7 +172,7 @@ export function Villain() {
             </p>
             <div
               className={cn(
-                "pointer-events-none absolute top-1/2 left-full z-10 ml-1.5 flex w-max max-w-[min(calc(100vw-2rem),16rem)] -translate-y-1/2 flex-col gap-1 transition-opacity duration-200 ease-out",
+                "pointer-events-none absolute top-1/2 left-full z-10 ml-1.5 flex w-max max-w-[min(calc(100dvw-2rem),16rem)] -translate-y-1/2 flex-col gap-1 transition-opacity duration-200 ease-out",
                 "opacity-0",
                 isOpenToOpportunitiesHovering && "opacity-100",
               )}
@@ -197,17 +197,17 @@ export function Villain() {
             </div>
           </div>
           <div>
-            <h1 className="text-foreground text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="text-foreground text-[clamp(1.875rem,5vw+1rem,3.75rem)] font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               {SITE_TAGLINE}
             </h1>
             <p
-              className="text-muted mx-auto mt-5 w-full max-w-4xl text-lg leading-relaxed sm:text-xl md:line-clamp-3 md:leading-snug"
+              className="text-muted mx-auto mt-5 w-full max-w-4xl text-base leading-relaxed sm:text-lg md:text-xl md:leading-snug"
             >
               {SITE_BIO}
             </p>
           </div>
-          <div className="text-foreground mx-auto mt-12 w-full max-w-4xl text-center sm:text-left">
-            <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
+          <div className="text-foreground mx-auto mt-10 w-full max-w-4xl text-center sm:mt-12 sm:text-left">
+            <div className="grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
               <div className="text-center">
                 <div className="flex flex-col items-center gap-2">
                   <Stack

@@ -126,7 +126,7 @@ function CompanyLogosWave({
 
   return (
     <div
-      className="mt-3 overflow-visible"
+      className="mt-3 max-w-full overflow-x-hidden"
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
       onPointerCancel={onPointerLeave}
@@ -222,7 +222,7 @@ export function ExperienceCompaniesSection() {
 
   return (
     <>
-      <div className="border-border bg-surface-muted/40 mt-10 w-full overflow-visible rounded-3xl border px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5">
+      <div className="border-border bg-surface-muted/40 mt-10 w-full max-w-full overflow-x-hidden rounded-3xl border px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5">
         <p className="text-muted text-xs font-medium tracking-wide uppercase">
           Companies
         </p>
