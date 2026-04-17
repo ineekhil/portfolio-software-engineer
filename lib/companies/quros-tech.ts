@@ -11,8 +11,8 @@ export const qurosTechDetail: WorkedCompanyDetail = {
   workArrangement: "Hybrid",
   rolesTimeline: [
     { title: "Software Engineer", period: "Jan 2025 – Present" },
-    { title: "QA Engineer", period: "Jul 2024 – Dec 2024" },
-    { title: "Android Intern", period: "Jan 2024 – Jun 2024" },
+    // { title: "QA Engineer", period: "Jul 2024 – Dec 2024" },
+    // { title: "Android Intern", period: "Jan 2024 – Jun 2024" },
   ],
   workDetails: [
     {

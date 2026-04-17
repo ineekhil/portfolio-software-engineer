@@ -10,12 +10,7 @@ import { HeaderSocial } from "@/components/layout/header-social";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { IconTooltip } from "@/components/ui/icon-tooltip";
 import { Container } from "@/components/ui/container";
-import {
-  NAV_ITEMS,
-  RESUME_DOWNLOAD_FILENAME,
-  RESUME_DOWNLOAD_HREF,
-  SITE_NAME,
-} from "@/lib/constants";
+import { NAV_ITEMS, RESUME_PAGE_HREF, SITE_NAME } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 /** Current main nav tab (route matches): dark pill + light text. */
@@ -89,25 +84,24 @@ export function Navbar() {
           aria-label="Main"
         >
           {NAV_ITEMS.map(({ href, label }) => {
-            const isResumeDownload = href === RESUME_DOWNLOAD_HREF;
-            const active = isResumeDownload
+            const isResumeNav = href === RESUME_PAGE_HREF;
+            const active = isResumeNav
               ? pathname === "/resume" || pathname.startsWith("/resume/")
               : href === "/"
                 ? pathname === "/"
                 : pathname === href || pathname.startsWith(`${href}/`);
 
-            if (isResumeDownload) {
+            if (isResumeNav) {
               return (
                 <IconTooltip
                   key={href}
-                  label="download cv"
+                  label="resume"
                   side="bottom"
                   preserveCase
                 >
                   <Link
                     href={href}
-                    download={RESUME_DOWNLOAD_FILENAME}
-                    aria-label="Download CV"
+                    aria-label="Resume"
                     className={cn(
                       "inline-flex items-center justify-center rounded-lg px-2.5 py-2 text-sm font-medium",
                       NAV_TAB_TRANSFORM,
@@ -158,12 +152,11 @@ export function Navbar() {
 
           <div className="flex items-center gap-2 md:hidden">
             <HeaderDecorIcons onNavigate={() => setOpen(false)} />
-            <IconTooltip label="download cv" side="bottom" preserveCase>
+            <IconTooltip label="resume" side="bottom" preserveCase>
               <Link
-                href={RESUME_DOWNLOAD_HREF}
-                download={RESUME_DOWNLOAD_FILENAME}
+                href={RESUME_PAGE_HREF}
                 onClick={() => setOpen(false)}
-                aria-label="Download CV"
+                aria-label="Resume"
                 className={cn(
                   "inline-flex items-center justify-center rounded-lg p-2",
                   NAV_TAB_TRANSFORM,
@@ -214,7 +207,7 @@ export function Navbar() {
         >
           <Container className="flex flex-col gap-4 py-4">
             <nav className="flex flex-col gap-1" aria-label="Mobile main">
-              {NAV_ITEMS.filter(({ href }) => href !== RESUME_DOWNLOAD_HREF).map(
+              {NAV_ITEMS.filter(({ href }) => href !== RESUME_PAGE_HREF).map(
                 ({ href, label }) => {
                   const active =
                     href === "/"

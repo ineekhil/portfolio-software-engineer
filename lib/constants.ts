@@ -8,13 +8,13 @@ export const SITE_TAGLINE = "Software Engineer";
 
 /** Full bio — home hero, about, and SEO where used. */
 export const SITE_BIO =
-  "Software Engineer with 3 years of experience in React, Android, and QA Automation. Skilled in building scalable solutions, optimizing performance, and delivering high-quality code. Experienced with CI/CD, cloud deployments, and automated testing, with a strong focus on user-centric applications.";
+  "Software Engineer with 4 years of experience specializing in mobile application development, building scalable and high-performance solutions. Skilled in optimizing performance and delivering clean, maintainable, high-quality code. Passionate about user-centric design and continuously learning to stay aligned with evolving technologies.";
 
 export const CONTACT_EMAIL = "i.neekhil@gmail.com";
 
 /** Default meta description (layout, etc.). */
 export const SITE_DESCRIPTION =
-  "Software Engineer with 3 years in React, Android, and QA Automation. Scalable solutions, CI/CD, testing, and user-centric applications.";
+  "Software Engineer with 4 years specializing in mobile apps—scalable, high-performance solutions, clean code, and user-centric design.";
 
 /** Villain section profile photo — `public/profile.png`. */
 export const VILLAIN_PROFILE_IMAGE = "/profile.png" as const;
@@ -31,12 +31,15 @@ export const RESUME_DOWNLOAD_FILENAME = "Avinash_Sharma_CV.pdf" as const;
 export const RESUME_DOWNLOAD_HREF =
   `/${RESUME_DOWNLOAD_FILENAME}` as const;
 
+/** Main nav + header CV icon — opens resume page (PDF download is optional on that page). */
+export const RESUME_PAGE_HREF = "/resume" as const;
+
 export const NAV_ITEMS: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/skills", label: "Skills" },
   { href: "/experience", label: "Experience" },
   { href: "/projects", label: "Projects" },
-  { href: RESUME_DOWNLOAD_HREF, label: "Resume" },
+  { href: RESUME_PAGE_HREF, label: "Resume" },
 ];
 
 /** Public read.cv (or other) profile — used on the Resume page. Replace with your URL. */

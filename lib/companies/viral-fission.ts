@@ -36,8 +36,8 @@ export const viralFissionDetail: WorkedCompanyDetail = {
   ],
   workArrangement: "Hybrid",
   rolesTimeline: [
-    { title: "Software Engineer", period: "Jan 2025 – Present" },
-    { title: "QA Engineer", period: "Feb 2023 – Mar 2025" },
+    { title: "Software Engineer", period: "Jan 2024 – Feb 2025" },
+    // { title: "QA Engineer", period: "Feb 2023 – Mar 2025" },
     { title: "Android Developer Intern", period: "Sept 2022 – Jan 2023" },
   ],
   workDetails: [
