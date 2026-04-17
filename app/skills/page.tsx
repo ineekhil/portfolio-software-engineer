@@ -23,8 +23,8 @@ export default function SkillsPage() {
             What I work with
           </h1>
           <p className="text-muted mt-6 text-center text-lg leading-relaxed sm:text-left">
-            Stack grouped by Frontend, Backend, Database, DevOps, and Testing
-            — the same pillars highlighted on the home page.
+            Stack grouped by Frontend, Mobile, Backend, Database, DevOps, and
+            Testing — the same pillars highlighted on the home page.
           </p>
           <div className="mt-14 space-y-12">
             {SKILL_CATEGORIES.map((category) => (

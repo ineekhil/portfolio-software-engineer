@@ -15,8 +15,12 @@ const LABEL_SLUG: Record<string, string> = {
   // SKILL_CATEGORIES
   "react & react native": "react",
   "next.js": "nextjs",
+  javascript: "javascript",
   typescript: "typescript",
   "tailwind css": "tailwindcss",
+  kotlin: "kotlin",
+  "jetpack compose": "jetpackcompose",
+  firebase: "firebase",
   "node.js": "nodejs",
   "express.js": "express",
   "rest apis": "openapi",
@@ -34,6 +38,7 @@ const LABEL_SLUG: Record<string, string> = {
 
   // HOME_HERO_SKILLS (pillar titles)
   frontend: "react",
+  mobile: "kotlin",
   backend: "nodejs",
   database: "mongodb",
   testing: "jest",
