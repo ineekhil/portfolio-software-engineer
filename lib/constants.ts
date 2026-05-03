@@ -26,7 +26,7 @@ export const SEARCH_HINTS: { label: string; query: string }[] = [
   { label: "skills…", query: "skills" },
 ];
 
-export const RESUME_DOWNLOAD_FILENAME = "Neekhil_Sharma_CV.pdf" as const;
+export const RESUME_DOWNLOAD_FILENAME = "Avinash_Sharma_CV.pdf" as const;
 
 export const RESUME_DOWNLOAD_HREF =
   `/${RESUME_DOWNLOAD_FILENAME}` as const;
