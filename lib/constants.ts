@@ -26,24 +26,17 @@ export const SEARCH_HINTS: { label: string; query: string }[] = [
   { label: "skills…", query: "skills" },
 ];
 
-export const RESUME_DOWNLOAD_FILENAME = "Avinash_Sharma_CV.pdf" as const;
+export const RESUME_DOWNLOAD_FILENAME = "Neekhil_Sharma_CV.pdf" as const;
 
 export const RESUME_DOWNLOAD_HREF =
   `/${RESUME_DOWNLOAD_FILENAME}` as const;
-
-/** Main nav + header CV icon — opens resume page (PDF download is optional on that page). */
-export const RESUME_PAGE_HREF = "/resume" as const;
 
 export const NAV_ITEMS: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/skills", label: "Skills" },
   { href: "/experience", label: "Experience" },
   { href: "/projects", label: "Projects" },
-  { href: RESUME_PAGE_HREF, label: "Resume" },
 ];
-
-/** Public read.cv (or other) profile — used on the Resume page. Replace with your URL. */
-export const READ_CV_PROFILE_URL = "https://read.cv/";
 
 /** Icon strip in the site header (labels map to icons in `HeaderSocial`). */
 export const HEADER_SOCIAL_LINKS: SocialLink[] = [

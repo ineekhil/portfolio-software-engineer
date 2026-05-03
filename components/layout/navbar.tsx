@@ -10,7 +10,12 @@ import { HeaderSocial } from "@/components/layout/header-social";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { IconTooltip } from "@/components/ui/icon-tooltip";
 import { Container } from "@/components/ui/container";
-import { NAV_ITEMS, RESUME_PAGE_HREF, SITE_NAME } from "@/lib/constants";
+import {
+  NAV_ITEMS,
+  RESUME_DOWNLOAD_FILENAME,
+  RESUME_DOWNLOAD_HREF,
+  SITE_NAME,
+} from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 /** Current main nav tab (route matches): dark pill + light text. */
@@ -102,43 +107,10 @@ export function Navbar() {
           aria-label="Main"
         >
           {NAV_ITEMS.map(({ href, label }) => {
-            const isResumeNav = href === RESUME_PAGE_HREF;
-            const active = isResumeNav
-              ? pathname === "/resume" || pathname.startsWith("/resume/")
-              : href === "/"
+            const active =
+              href === "/"
                 ? pathname === "/"
                 : pathname === href || pathname.startsWith(`${href}/`);
-
-            if (isResumeNav) {
-              return (
-                <IconTooltip
-                  key={href}
-                  label="resume"
-                  side="bottom"
-                  preserveCase
-                >
-                  <Link
-                    href={href}
-                    aria-label="Resume"
-                    className={cn(
-                      "inline-flex items-center justify-center rounded-lg px-2.5 py-2 text-sm font-medium",
-                      NAV_TAB_TRANSFORM,
-                      navTabRotation(active),
-                      active
-                        ? NAV_ACTIVE_TAB
-                        : "text-muted",
-                      "hover:bg-[#73A5CA] hover:text-white",
-                    )}
-                  >
-                    <ReadCvLogoIcon
-                      className="size-5 shrink-0"
-                      weight="duotone"
-                      aria-hidden
-                    />
-                  </Link>
-                </IconTooltip>
-              );
-            }
 
             return (
               <Link
@@ -158,6 +130,26 @@ export function Navbar() {
               </Link>
             );
           })}
+          <IconTooltip label="download resume" side="bottom" preserveCase>
+            <Link
+              href={RESUME_DOWNLOAD_HREF}
+              download={RESUME_DOWNLOAD_FILENAME}
+              aria-label="Download resume (PDF)"
+              className={cn(
+                "inline-flex items-center justify-center rounded-lg px-2.5 py-2 text-sm font-medium",
+                NAV_TAB_TRANSFORM,
+                navTabRotation(false),
+                "text-muted",
+                "hover:bg-[#73A5CA] hover:text-white",
+              )}
+            >
+              <ReadCvLogoIcon
+                className="size-5 shrink-0"
+                weight="duotone"
+                aria-hidden
+              />
+            </Link>
+          </IconTooltip>
         </nav>
 
         <div className="flex min-w-0 flex-1 items-center justify-end gap-2 lg:max-w-none lg:flex-none lg:gap-3">
@@ -170,20 +162,17 @@ export function Navbar() {
 
           <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
             <HeaderDecorIcons onNavigate={() => setOpen(false)} />
-            <IconTooltip label="resume" side="bottom" preserveCase>
+            <IconTooltip label="download resume" side="bottom" preserveCase>
               <Link
-                href={RESUME_PAGE_HREF}
+                href={RESUME_DOWNLOAD_HREF}
+                download={RESUME_DOWNLOAD_FILENAME}
                 onClick={() => setOpen(false)}
-                aria-label="Resume"
+                aria-label="Download resume (PDF)"
                 className={cn(
                   "inline-flex items-center justify-center rounded-lg p-2",
                   NAV_TAB_TRANSFORM,
-                  navTabRotation(
-                    pathname === "/resume" || pathname.startsWith("/resume/"),
-                  ),
-                  pathname === "/resume" || pathname.startsWith("/resume/")
-                    ? NAV_ACTIVE_TAB
-                    : "text-muted",
+                  navTabRotation(false),
+                  "text-muted",
                   "hover:bg-[#73A5CA] hover:text-white",
                 )}
               >
@@ -225,32 +214,30 @@ export function Navbar() {
         >
           <Container className="flex flex-col gap-4 py-4">
             <nav className="flex flex-col gap-1" aria-label="Mobile main">
-              {NAV_ITEMS.filter(({ href }) => href !== RESUME_PAGE_HREF).map(
-                ({ href, label }) => {
-                  const active =
-                    href === "/"
-                      ? pathname === "/"
-                      : pathname === href || pathname.startsWith(`${href}/`);
-                  return (
-                    <Link
-                      key={href}
-                      href={href}
-                      onClick={() => setOpen(false)}
-                      className={cn(
-                        "inline-flex w-full items-center rounded-lg px-3 py-3 text-base font-medium",
-                        NAV_TAB_TRANSFORM,
-                        navTabRotation(active),
-                        active
-                          ? NAV_ACTIVE_TAB
-                          : "text-muted",
-                        "hover:bg-[#73A5CA] hover:text-white",
-                      )}
-                    >
-                      {label}
-                    </Link>
-                  );
-                },
-              )}
+              {NAV_ITEMS.map(({ href, label }) => {
+                const active =
+                  href === "/"
+                    ? pathname === "/"
+                    : pathname === href || pathname.startsWith(`${href}/`);
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "inline-flex w-full items-center rounded-lg px-3 py-3 text-base font-medium",
+                      NAV_TAB_TRANSFORM,
+                      navTabRotation(active),
+                      active
+                        ? NAV_ACTIVE_TAB
+                        : "text-muted",
+                      "hover:bg-[#73A5CA] hover:text-white",
+                    )}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
             </nav>
             <HeaderSearch className="max-w-none" />
             <div className="flex justify-center pt-1">
