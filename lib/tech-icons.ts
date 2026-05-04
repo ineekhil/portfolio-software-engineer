@@ -35,6 +35,9 @@ const LABEL_SLUG: Record<string, string> = {
   "ci/cd": "githubactions",
   jest: "jest",
   "react navigation": "reactnative",
+  "system design": "kubernetes",
+  "modular architecture": "redux",
+  performance: "nginx",
 
   // HOME_HERO_RECENT_TECH
   "react native": "reactnative",
@@ -42,11 +45,11 @@ const LABEL_SLUG: Record<string, string> = {
 
   // HOME_HERO_SKILLS (pillar titles)
   languages: "javascript",
-  "mobile framework": "reactnative",
+  mobile: "reactnative",
   backend: "nodejs",
+  architecture: "kubernetes",
   database: "mongodb",
-  "devops / cloud": "firebase",
-  testing: "jest",
+  "test & tools": "jest",
 
   // Project / generic tags
   tailwind: "tailwindcss",

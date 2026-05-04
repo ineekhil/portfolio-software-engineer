@@ -8,13 +8,13 @@ export const SITE_TAGLINE = "Software Engineer";
 
 /** Full bio — home hero, about, and SEO where used. */
 export const SITE_BIO =
-  "Software Engineer (Full-Stack Mobile) with 4 years of experience in React Native and Node.js, building end-to-end mobile applications with scalable APIs, efficient state management, and optimized performance. Familiar with Android native development for platform-specific enhancements.";
+  "Software Engineer with 3+ years of experience building high-performance, scalable cross-platform mobile applications using React Native. Proven expertise in optimizing app performance, reducing load times, and delivering production-grade applications used by thousands of users. Strong full-stack capabilities with Node.js and RESTful API development, along with a solid foundation in system design, modular architecture, and performance optimization.";
 
 export const CONTACT_EMAIL = "i.neekhil@gmail.com";
 
 /** Default meta description (layout, etc.). */
 export const SITE_DESCRIPTION =
-  "Full-Stack Mobile Software Engineer—React Native, Node.js, scalable APIs, and Android native enhancements. End-to-end mobile apps with strong performance focus.";
+  "Software Engineer (3+ years): React Native cross-platform apps, performance and load-time optimization, Node.js and REST APIs, system design and modular architecture—production apps for thousands of users.";
 
 /** Villain section profile photo — `public/profile.png`. */
 export const VILLAIN_PROFILE_IMAGE = "/profile.png" as const;
@@ -102,27 +102,27 @@ export const HOME_HERO_RECENT_PROJECTS = [
 export const SKILL_CATEGORIES = [
   {
     title: "Languages",
-    items: ["JavaScript", "TypeScript", "Kotlin", "Swift", "Dart"],
+    items: ["JavaScript", "TypeScript", "Kotlin"],
   },
   {
-    title: "Mobile Framework",
-    items: ["React Native", "Flutter"],
+    title: "Mobile",
+    items: ["React Native", "Redux", "React Navigation"],
   },
   {
     title: "Backend",
-    items: ["Node.js", "Express.js"],
+    items: ["Node.js", "Express.js", "REST APIs"],
+  },
+  {
+    title: "Architecture",
+    items: ["System design", "Modular architecture", "Performance"],
   },
   {
     title: "Database",
     items: ["MongoDB"],
   },
   {
-    title: "DevOps / Cloud",
-    items: ["Git", "CI/CD", "Firebase"],
-  },
-  {
-    title: "Testing",
-    items: ["Jest"],
+    title: "Test & Tools",
+    items: ["Jest", "Git", "CI/CD", "Firebase"],
   },
 ] as const;
 
