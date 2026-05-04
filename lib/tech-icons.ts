@@ -19,28 +19,33 @@ const LABEL_SLUG: Record<string, string> = {
   typescript: "typescript",
   "tailwind css": "tailwindcss",
   kotlin: "kotlin",
+  swift: "swift",
+  dart: "dart",
+  flutter: "flutter",
+  expo: "expo",
   "jetpack compose": "jetpackcompose",
   firebase: "firebase",
   "node.js": "nodejs",
   "express.js": "express",
   "rest apis": "openapi",
   mongodb: "mongodb",
+  axios: "axios",
+  redux: "redux",
   git: "git",
   "ci/cd": "githubactions",
-  "cloud deployments": "googlecloud",
   jest: "jest",
-  cypress: "cypressio",
-  selenium: "selenium",
+  "react navigation": "reactnative",
 
   // HOME_HERO_RECENT_TECH
   "react native": "reactnative",
   devops: "docker",
 
   // HOME_HERO_SKILLS (pillar titles)
-  frontend: "react",
-  mobile: "kotlin",
+  languages: "javascript",
+  "mobile framework": "reactnative",
   backend: "nodejs",
   database: "mongodb",
+  "devops / cloud": "firebase",
   testing: "jest",
 
   // Project / generic tags
@@ -56,17 +61,33 @@ const LABEL_VARIANT: Record<string, string> = {
   jest: "plain",
 };
 
+/**
+ * CSS classes for devicons that are dark-on-transparent (invisible on dark UI).
+ * Same assets as https://techicons.dev/ (devicon CDN).
+ */
+const LABEL_ICON_CLASS: Record<string, string> = {
+  "express.js": "dark:invert",
+};
+
 function normalizeLabel(label: string): string {
   return label.trim().toLowerCase();
 }
 
-export type TechIconAsset = { slug: string; variant: string };
+export type TechIconAsset = {
+  slug: string;
+  variant: string;
+  className?: string;
+};
 
 export function techIconAssetForLabel(label: string): TechIconAsset | null {
   const key = normalizeLabel(label);
   const slug = LABEL_SLUG[key];
   if (!slug) return null;
-  return { slug, variant: LABEL_VARIANT[key] ?? "original" };
+  return {
+    slug,
+    variant: LABEL_VARIANT[key] ?? "original",
+    className: LABEL_ICON_CLASS[key],
+  };
 }
 
 export function techIconSlugForLabel(label: string): string | null {

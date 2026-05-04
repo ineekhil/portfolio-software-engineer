@@ -8,13 +8,13 @@ export const SITE_TAGLINE = "Software Engineer";
 
 /** Full bio — home hero, about, and SEO where used. */
 export const SITE_BIO =
-  "Software Engineer with 4 years of experience specializing in mobile application development, building scalable and high-performance solutions. Skilled in optimizing performance and delivering clean, maintainable, high-quality code. Passionate about user-centric design and continuously learning to stay aligned with evolving technologies.";
+  "Software Engineer (Full-Stack Mobile) with 4 years of experience in React Native and Node.js, building end-to-end mobile applications with scalable APIs, efficient state management, and optimized performance. Familiar with Android native development for platform-specific enhancements.";
 
 export const CONTACT_EMAIL = "i.neekhil@gmail.com";
 
 /** Default meta description (layout, etc.). */
 export const SITE_DESCRIPTION =
-  "Software Engineer with 4 years specializing in mobile apps—scalable, high-performance solutions, clean code, and user-centric design.";
+  "Full-Stack Mobile Software Engineer—React Native, Node.js, scalable APIs, and Android native enhancements. End-to-end mobile apps with strong performance focus.";
 
 /** Villain section profile photo — `public/profile.png`. */
 export const VILLAIN_PROFILE_IMAGE = "/profile.png" as const;
@@ -53,7 +53,7 @@ export const FEATURED_PROJECTS: Project[] = [
     title: "Design system starter",
     description:
       "Reusable UI primitives and tokens for shipping consistent interfaces faster.",
-    tags: ["Next.js", "Tailwind", "TypeScript"],
+    tags: ["React Native", "TypeScript", "Redux"],
     href: "#",
     sourceHref: "#",
   },
@@ -62,7 +62,7 @@ export const FEATURED_PROJECTS: Project[] = [
     title: "Analytics dashboard",
     description:
       "Real-time charts and filters with a focus on clarity and performance.",
-    tags: ["React", "Data viz"],
+    tags: ["React Native", "Data viz"],
     href: "#",
   },
 ];
@@ -83,12 +83,12 @@ export const ALL_PROJECTS: Project[] = [
 export const HOME_HERO_RECENT_TECH = [
   "React Native",
   "Node.js",
-  "Next.js",
   "TypeScript",
   "Express.js",
   "MongoDB",
+  "Firebase",
   "Git",
-  "DevOps",
+  "CI/CD",
   "Jest",
 ] as const;
 
@@ -98,32 +98,31 @@ export const HOME_HERO_RECENT_PROJECTS = [
   "API toolkit",
 ] as const;
 
-/** Skills page and home hero — four pillars in this order. */
+/** Skills page and home hero — categories in this order. */
 export const SKILL_CATEGORIES = [
   {
-    title: "Frontend",
-    items: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-    ],
+    title: "Languages",
+    items: ["JavaScript", "TypeScript", "Kotlin", "Swift", "Dart"],
+  },
+  {
+    title: "Mobile Framework",
+    items: ["React Native", "Flutter"],
   },
   {
     title: "Backend",
-    items: ["Node.js", "Express.js", "REST APIs"],
+    items: ["Node.js", "Express.js"],
   },
   {
     title: "Database",
     items: ["MongoDB"],
   },
   {
-    title: "DevOps",
-    items: ["Git", "CI/CD", "Cloud deployments"],
+    title: "DevOps / Cloud",
+    items: ["Git", "CI/CD", "Firebase"],
   },
   {
     title: "Testing",
-    items: ["Jest", "Cypress", "Selenium"],
+    items: ["Jest"],
   },
 ] as const;
 

@@ -6,6 +6,13 @@ import { TechIcon } from "@/components/ui/tech-icon";
 import { SITE_NAME, SKILL_CATEGORIES } from "@/lib/constants";
 import { techIconAssetForLabel } from "@/lib/tech-icons";
 
+function skillsSectionId(title: string) {
+  return `skills-${title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")}`;
+}
+
 export const metadata: Metadata = {
   title: "Skills",
   description: `Skills and technologies — ${SITE_NAME}.`,
@@ -28,9 +35,9 @@ export default function SkillsPage() {
           </p>
           <div className="mt-14 space-y-12">
             {SKILL_CATEGORIES.map((category) => (
-              <section key={category.title} aria-labelledby={`skills-${category.title}`}>
+              <section key={category.title} aria-labelledby={skillsSectionId(category.title)}>
                 <h2
-                  id={`skills-${category.title}`}
+                  id={skillsSectionId(category.title)}
                   className="text-foreground text-center text-xl font-semibold tracking-tight sm:text-left"
                 >
                   {category.title}
@@ -49,6 +56,7 @@ export default function SkillsPage() {
                               slug={icon.slug}
                               variant={icon.variant}
                               size={48}
+                              className={icon.className}
                             />
                           ) : (
                             <span
