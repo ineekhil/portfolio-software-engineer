@@ -57,7 +57,6 @@ export const messages = {
   roles: {
     frontendDevelopment: "Frontend Development",
     backendDeveloper: "Backend Developer",
-    qaEngineer: "QA Engineer",
     fullStackDeveloper: "Full Stack Developer",
     devOpsEngineer: "DevOps Engineer",
     androidDeveloper: "Android Developer",

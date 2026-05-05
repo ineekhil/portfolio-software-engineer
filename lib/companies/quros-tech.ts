@@ -4,14 +4,13 @@ import type { WorkedCompanyDetail } from "@/lib/companies/types";
 export const qurosTechDetail: WorkedCompanyDetail = {
   aboutLines: [
     "Quros Tech delivers software products and internal tools for clients.",
-    "I rotated through engineering and QA before focusing on full-stack delivery; the team uses modern JS and Kotlin.",
+    "I focus on full-stack delivery; the team uses modern JS and Kotlin.",
     "Update this blurb with your real mission, stack, and culture.",
   ],
   location: "Pune, India",
   workArrangement: "Hybrid",
   rolesTimeline: [
     { title: "Software Engineer", period: "Jan 2025 – Present" },
-    // { title: "QA Engineer", period: "Jul 2024 – Dec 2024" },
     // { title: "Android Intern", period: "Jan 2024 – Jun 2024" },
   ],
   workDetails: [
@@ -36,14 +35,6 @@ export const qurosTechDetail: WorkedCompanyDetail = {
         "Built web apps using React/Next.js.",
         "Developed APIs with Node.js.",
         "Improved performance.",
-      ],
-    },
-    {
-      roleTitle: "QA Engineer",
-      technologies: ["TypeScript", "Jest", "Postman", "Jira", "Git"],
-      bullets: [
-        "Tested APIs using Postman.",
-        "Reported bugs using JIRA.",
       ],
     },
     {

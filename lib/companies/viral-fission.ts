@@ -36,8 +36,7 @@ export const viralFissionDetail: WorkedCompanyDetail = {
   ],
   workArrangement: "Hybrid",
   rolesTimeline: [
-    { title: "Software Engineer", period: "Jan 2024 – Feb 2025" },
-    // { title: "QA Engineer", period: "Feb 2023 – Mar 2025" },
+    { title: "Software Engineer", period: "Feb 2023 – Present" },
     { title: "Android Developer Intern", period: "Sept 2022 – Jan 2023" },
   ],
   workDetails: [
@@ -61,20 +60,6 @@ export const viralFissionDetail: WorkedCompanyDetail = {
         "Built and maintained web experiences with React and integrated APIs backed by Java services.",
         "Worked with MongoDB for data-heavy campaign and analytics features.",
         "Collaborated on performance, reliability, and code quality across the stack.",
-      ],
-    },
-    {
-      roleTitle: "QA Engineer",
-      technologies: [
-        "TypeScript",
-        "Jest",
-        "Postman",
-        "Jira",
-        "Git",
-      ],
-      bullets: [
-        "Validated APIs and end-to-end flows; documented issues and regressions clearly for engineering.",
-        "Partnered with developers to reproduce bugs and improve release confidence.",
       ],
     },
     {
