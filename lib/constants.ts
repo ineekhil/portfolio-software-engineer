@@ -8,7 +8,7 @@ export const SITE_TAGLINE = "Software Engineer";
 
 /** Full bio — home hero, about, and SEO where used. */
 export const SITE_BIO =
-  "Software Engineer with 3+ years of experience building high-performance, scalable cross-platform mobile applications using React Native. Proven expertise in optimizing app performance, reducing load times, and delivering production-grade applications used by thousands of users. Strong full-stack capabilities with Node.js and RESTful API development, along with a solid foundation in system design, modular architecture, and performance optimization.";
+  "Software Engineer with 3.5+ years of experience building scalable web and mobile applications using React, React Native, Node.js, and Express.js. Passionate about clean code, performance, and user-centric solutions. AI enthusiast who enjoys exploring emerging technologies and continuously learning new tools and frameworks.";
 
 export const CONTACT_EMAIL = "i.neekhil@gmail.com";
 
