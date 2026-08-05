@@ -2,6 +2,7 @@ import type { NavItem, Project, SocialLink } from "@/types";
 
 export const SITE_NAME = "Neekhil";
 export const COPYRIGHT_HOLDER = "Neekhil Sharma";
+export const HOME_UNDER_CONSTRUCTION = true;
 
 /** Short headline for the home hero (h1). */
 export const SITE_TAGLINE = "Software Engineer";
@@ -18,6 +19,7 @@ export const SITE_DESCRIPTION =
 
 /** Villain section profile photo — `public/profile.png`. */
 export const VILLAIN_PROFILE_IMAGE = "/profile.png" as const;
+export const CONSTRUCTION_PROFILE_IMAGE = "/neekhilyesss.jpg" as const;
 
 /** Shown when the header search is focused — click runs a search with `query`. */
 export const SEARCH_HINTS: { label: string; query: string }[] = [
