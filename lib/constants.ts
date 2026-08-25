@@ -29,10 +29,15 @@ export const SEARCH_HINTS: { label: string; query: string }[] = [
   { label: "skills…", query: "skills" },
 ];
 
-export const RESUME_DOWNLOAD_FILENAME = "Avinash_Sharma_CV.pdf" as const;
+/** The résumé file actually served from `public/` — left unchanged on disk. */
+export const RESUME_DOWNLOAD_HREF = "/Avinash_Sharma_CV.pdf" as const;
 
-export const RESUME_DOWNLOAD_HREF =
-  `/${RESUME_DOWNLOAD_FILENAME}` as const;
+/**
+ * Filename the browser saves the résumé as. The same-origin `download`
+ * attribute renames the download to your name without touching the file
+ * on disk (so the visitor gets "Neekhil_Sharma_CV.pdf").
+ */
+export const RESUME_DOWNLOAD_FILENAME = "Neekhil_Sharma_CV.pdf" as const;
 
 export const NAV_ITEMS: NavItem[] = [
   { href: "/", label: "Home" },
@@ -61,8 +66,6 @@ export const FEATURED_PROJECTS: Project[] = [
     description:
       "Reusable UI primitives and tokens for shipping consistent interfaces faster.",
     tags: ["React Native", "TypeScript", "Redux"],
-    href: "#",
-    sourceHref: "#",
   },
   {
     id: "2",
@@ -70,7 +73,6 @@ export const FEATURED_PROJECTS: Project[] = [
     description:
       "Real-time charts and filters with a focus on clarity and performance.",
     tags: ["React Native", "Data viz"],
-    href: "#",
   },
 ];
 
@@ -82,7 +84,6 @@ export const ALL_PROJECTS: Project[] = [
     description:
       "Typed client SDK and OpenAPI-driven docs for internal microservices.",
     tags: ["Node", "OpenAPI"],
-    sourceHref: "#",
   },
 ];
 
@@ -95,7 +96,7 @@ export type ImpactStat = { value: string; label: string };
 export const IMPACT_STATS: ImpactStat[] = [
   { value: "3.5+", label: "Years of experience" },
   { value: "1000s", label: "Users reached in production" },
-  { value: "4", label: "Service lines — web, app, QA, AI" },
+  { value: "10+", label: "Web & mobile apps shipped" },
 ];
 
 /** Home hero (below bio): recent stack, project names, skills — edit to match you. */

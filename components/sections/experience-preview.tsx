@@ -18,7 +18,7 @@ export function ExperiencePreview() {
     <Section className="bg-surface-muted/40">
       <Container>
         <SectionHeading
-          index="04"
+          index="03"
           title="Experience"
           description="Shipping production software alongside product, design, and data teams."
           actionHref="/experience"

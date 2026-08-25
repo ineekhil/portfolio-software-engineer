@@ -12,7 +12,7 @@ export function SkillsPreview() {
     <Section>
       <Container>
         <SectionHeading
-          index="03"
+          index="02"
           title="Skills & stack"
           description="A snapshot of my day-to-day tools across mobile, web, and backend."
           actionHref="/skills"

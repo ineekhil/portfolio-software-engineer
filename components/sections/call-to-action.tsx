@@ -1,23 +1,15 @@
 "use client";
 
-import { DownloadSimple, WhatsappLogo } from "@phosphor-icons/react";
+import { ArrowRight, DownloadSimple } from "@phosphor-icons/react";
 
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import {
-  HEADER_SOCIAL_LINKS,
-  RESUME_DOWNLOAD_FILENAME,
-  RESUME_DOWNLOAD_HREF,
-} from "@/lib/constants";
+import { RESUME_DOWNLOAD_FILENAME, RESUME_DOWNLOAD_HREF } from "@/lib/constants";
 import { messages } from "@/lib/messages";
-import { COMPANY_NAME } from "@/lib/services";
+import { COMPANY_NAME, COMPANY_URL } from "@/lib/services";
 
-const whatsAppHref =
-  HEADER_SOCIAL_LINKS.find((link) => link.label === "WhatsApp")?.href ??
-  "/contact";
-
-/** Home closing CTA — one path for recruiters, one for prospective clients. */
+/** Home closing CTA — recruiter-focused; client interest is routed to the studio. */
 export function CallToAction() {
   return (
     <Section>
@@ -29,55 +21,36 @@ export function CallToAction() {
           <h2 className="mt-4 max-w-3xl text-[clamp(2rem,5vw,3.5rem)] leading-[1.02] font-semibold tracking-tight text-balance">
             {messages.contact.letsBuildSomethingAmazing}
           </h2>
-          <div className="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-0">
-            <div className="sm:pr-10">
-              <h3 className="text-foreground text-lg font-semibold tracking-tight">
-                Hiring?
-              </h3>
-              <p className="text-muted mt-2 text-sm leading-relaxed">
-                I&apos;m open to Software Engineer roles — full-stack, React /
-                React Native, and Node.
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href="/contact" variant="primary">
-                  Get in touch
-                  <span aria-hidden>&rarr;</span>
-                </ButtonLink>
-                <ButtonLink
-                  href={RESUME_DOWNLOAD_HREF}
-                  download={RESUME_DOWNLOAD_FILENAME}
-                  variant="secondary"
-                >
-                  <DownloadSimple className="size-4" weight="bold" aria-hidden />
-                  Résumé
-                </ButtonLink>
-              </div>
-            </div>
-            <div className="border-border border-t pt-10 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-10">
-              <h3 className="text-foreground text-lg font-semibold tracking-tight">
-                Have a project?
-              </h3>
-              <p className="text-muted mt-2 text-sm leading-relaxed">
-                Let&apos;s build your web, mobile, QA, or AI product at{" "}
-                {COMPANY_NAME}.
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href="/contact" variant="primary">
-                  Start a project
-                  <span aria-hidden>&rarr;</span>
-                </ButtonLink>
-                <ButtonLink
-                  href={whatsAppHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="secondary"
-                >
-                  <WhatsappLogo className="size-4" weight="fill" aria-hidden />
-                  WhatsApp
-                </ButtonLink>
-              </div>
-            </div>
+          <p className="text-muted mt-5 max-w-xl text-base leading-relaxed">
+            I&apos;m open to Software Engineer roles — full-stack, React /
+            React Native, and Node. Tell me what you&apos;re building.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <ButtonLink href="/contact" variant="primary">
+              Get in touch
+              <ArrowRight className="size-4" weight="bold" aria-hidden />
+            </ButtonLink>
+            <ButtonLink
+              href={RESUME_DOWNLOAD_HREF}
+              download={RESUME_DOWNLOAD_FILENAME}
+              variant="secondary"
+            >
+              <DownloadSimple className="size-4" weight="bold" aria-hidden />
+              Résumé
+            </ButtonLink>
           </div>
+          <p className="text-muted mt-8 text-sm">
+            Have a project instead? I run{" "}
+            <a
+              href={COMPANY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+            >
+              {COMPANY_NAME}
+            </a>
+            .
+          </p>
         </div>
       </Container>
     </Section>

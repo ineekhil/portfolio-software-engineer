@@ -4,6 +4,7 @@ import { PaperPlaneRight } from "@phosphor-icons/react";
 import { useState, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
+import { CONTACT_EMAIL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type FieldState = {
@@ -20,6 +21,17 @@ export function ContactForm() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const subject = `Portfolio enquiry — ${values.name || "New message"}`;
+    const body = [
+      `Name: ${values.name}`,
+      `Email: ${values.email}`,
+      "",
+      values.message,
+    ].join("\n");
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
     setSubmitted(true);
   }
 
@@ -29,10 +41,19 @@ export function ContactForm() {
         className="border-border bg-surface-muted/50 rounded-2xl border p-8 text-center"
         role="status"
       >
-        <p className="text-foreground text-lg font-medium">Message recorded</p>
+        <p className="text-foreground text-lg font-medium">
+          Your email app is opening…
+        </p>
         <p className="text-muted mt-2 text-sm">
-          This demo does not send email. Wire this form to your API, Formspree,
-          or Resend in production.
+          I&apos;ve pre-filled your message — just hit send. If nothing opened,
+          email me directly at{" "}
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="text-accent underline-offset-4 hover:underline"
+          >
+            {CONTACT_EMAIL}
+          </a>
+          .
         </p>
         <Button
           type="button"
@@ -43,7 +64,7 @@ export function ContactForm() {
             setValues(initial);
           }}
         >
-          Send another
+          Start over
         </Button>
       </div>
     );
@@ -53,7 +74,6 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       className="border-border bg-background space-y-5 rounded-2xl border p-5 sm:space-y-6 sm:p-8"
-      noValidate
     >
       <div>
         <label
