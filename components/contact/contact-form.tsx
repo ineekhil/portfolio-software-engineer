@@ -52,7 +52,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-border bg-background space-y-5 rounded-2xl border p-5 shadow-sm sm:space-y-6 sm:p-8"
+      className="border-border bg-background space-y-5 rounded-2xl border p-5 sm:space-y-6 sm:p-8"
       noValidate
     >
       <div>

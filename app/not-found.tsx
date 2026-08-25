@@ -6,7 +6,9 @@ export default function NotFound() {
   return (
     <div className="flex flex-1 flex-col items-center justify-center py-24">
       <Container className="text-center">
-        <p className="text-muted text-sm font-medium">404</p>
+        <p className="text-muted font-mono text-xs tracking-[0.2em] uppercase">
+          404
+        </p>
         <h1 className="text-foreground mt-2 text-3xl font-semibold tracking-tight">
           Page not found
         </h1>

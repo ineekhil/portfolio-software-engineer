@@ -6,31 +6,34 @@ import { SKILL_CATEGORIES } from "@/lib/constants";
 
 export function AboutSkills() {
   return (
-    <>
-      <h2 className="text-foreground mt-14 text-center text-2xl font-semibold tracking-tight sm:text-left">
+    <div className="mt-14">
+      <h2 className="border-foreground/15 border-t pt-5 text-2xl font-semibold tracking-tight">
         Focus areas
       </h2>
-      <div className="mt-6 space-y-10">
+      <div className="mt-8 grid gap-x-10 gap-y-10 sm:grid-cols-2">
         {SKILL_CATEGORIES.map((category) => (
           <div key={category.title}>
-            <h3 className="text-foreground text-center text-base font-semibold tracking-tight sm:text-left">
+            <h3 className="text-muted font-mono text-xs tracking-wide uppercase">
               {category.title}
             </h3>
-            <ul className="mt-3 space-y-3">
+            <ul className="mt-3 space-y-2.5">
               {category.items.map((skill) => (
-                <li key={skill} className="text-muted flex items-start gap-3">
+                <li
+                  key={skill}
+                  className="text-foreground/90 flex items-start gap-2.5"
+                >
                   <CheckCircle
-                    className="text-accent mt-0.5 size-5 shrink-0"
+                    className="text-accent mt-0.5 size-4 shrink-0"
                     weight="fill"
                     aria-hidden
                   />
-                  <span>{skill}</span>
+                  <span className="text-sm leading-relaxed">{skill}</span>
                 </li>
               ))}
             </ul>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

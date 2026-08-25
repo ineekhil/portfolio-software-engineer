@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { AboutSkills } from "@/components/about/about-skills";
 import { Container } from "@/components/ui/container";
+import { PageHeader } from "@/components/ui/page-header";
 import { Section } from "@/components/ui/section";
 import { SITE_BIO, SITE_NAME } from "@/lib/constants";
 
@@ -14,17 +15,13 @@ export default function AboutPage() {
   return (
     <Section className="pt-12 sm:pt-16">
       <Container>
-        <div className="mx-auto max-w-3xl">
-          <p className="text-accent text-center text-sm font-medium tracking-wider uppercase sm:text-left">
-            About
-          </p>
-          <h1 className="text-foreground mt-2 text-center text-4xl font-semibold tracking-tight sm:text-left sm:text-5xl">
-            Hi, I&apos;m {SITE_NAME}
-          </h1>
-          <p className="text-muted mt-6 text-center text-lg leading-relaxed sm:text-left">
-            {SITE_BIO}
-          </p>
-
+        <div className="max-w-3xl">
+          <PageHeader
+            eyebrow="About"
+            title={`Hi, I'm ${SITE_NAME}`}
+            description={SITE_BIO}
+            className="max-w-none"
+          />
           <AboutSkills />
         </div>
       </Container>

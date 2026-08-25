@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ExperienceCompaniesSection } from "@/components/experience/experience-companies-section";
 import { Container } from "@/components/ui/container";
+import { PageHeader } from "@/components/ui/page-header";
 import { Section } from "@/components/ui/section";
 import { SITE_NAME } from "@/lib/constants";
 
@@ -14,13 +15,12 @@ export default function ExperiencePage() {
   return (
     <Section className="pt-12 sm:pt-16">
       <Container>
-        <div className="mx-auto max-w-5xl">
-          <h1 className="text-foreground text-center text-4xl font-semibold tracking-tight sm:text-left sm:text-5xl">
-            Where I&apos;ve worked
-          </h1>
-
-          <ExperienceCompaniesSection />
-        </div>
+        <PageHeader
+          eyebrow="Experience"
+          title="Where I've worked"
+          description="Companies I've shipped production software with. Pick a logo to see the roles, what the team does, and a few highlights."
+        />
+        <ExperienceCompaniesSection />
       </Container>
     </Section>
   );

@@ -222,8 +222,8 @@ export function ExperienceCompaniesSection() {
 
   return (
     <>
-      <div className="border-border bg-surface-muted/40 mt-10 w-full max-w-full overflow-x-hidden rounded-3xl border px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5">
-        <p className="text-muted text-xs font-medium tracking-wide uppercase">
+      <div className="border-border bg-surface-muted/40 mt-10 w-full max-w-full overflow-x-hidden rounded-2xl border px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5">
+        <p className="text-muted font-mono text-xs tracking-wide uppercase">
           Companies
         </p>
         <CompanyLogosWave
