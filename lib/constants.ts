@@ -6,6 +6,9 @@ export const COPYRIGHT_HOLDER = "Neekhil Sharma";
 /** Short headline for the home hero (h1). */
 export const SITE_TAGLINE = "Software Engineer";
 
+/** Value-proposition headline — the big line in the home hero (h1). */
+export const SITE_HEADLINE = "I build scalable, user-first web & mobile apps";
+
 /** Full bio — home hero, about, and SEO where used. */
 export const SITE_BIO =
   "Software Engineer with 3.5+ years of experience building scalable web and mobile applications using React, React Native, Node.js, and Express.js. Passionate about clean code, performance, and user-centric solutions. AI enthusiast who enjoys exploring emerging technologies and continuously learning new tools and frameworks.";
@@ -47,6 +50,10 @@ export const HEADER_SOCIAL_LINKS: SocialLink[] = [
   { label: "Instagram", href: "https://www.instagram.com/neekhil.sharmaa/" },
 ];
 
+/**
+ * Home "Featured projects" + `/projects`. PLACEHOLDER content — replace with
+ * real projects (title, one-line description, tags, and live/source links).
+ */
 export const FEATURED_PROJECTS: Project[] = [
   {
     id: "1",
@@ -77,6 +84,18 @@ export const ALL_PROJECTS: Project[] = [
     tags: ["Node", "OpenAPI"],
     sourceHref: "#",
   },
+];
+
+/**
+ * Home "Impact" strip — quick credibility signals for recruiters and clients.
+ * CONFIRM these against your real numbers before launch.
+ */
+export type ImpactStat = { value: string; label: string };
+
+export const IMPACT_STATS: ImpactStat[] = [
+  { value: "3.5+", label: "Years of experience" },
+  { value: "1000s", label: "Users reached in production" },
+  { value: "4", label: "Service lines — web, app, QA, AI" },
 ];
 
 /** Home hero (below bio): recent stack, project names, skills — edit to match you. */

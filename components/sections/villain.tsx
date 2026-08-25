@@ -1,21 +1,22 @@
 "use client";
 
-import { Code, FolderOpen, Plus, Sparkle, Stack } from "@phosphor-icons/react";
+import { ArrowRight, ArrowUpRight, DownloadSimple, Sparkle } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
 import {
-  HOME_HERO_RECENT_PROJECTS,
-  HOME_HERO_RECENT_TECH,
-  HOME_HERO_SKILLS,
-  SITE_BIO,
+  RESUME_DOWNLOAD_FILENAME,
+  RESUME_DOWNLOAD_HREF,
+  SITE_HEADLINE,
   SITE_NAME,
   SITE_TAGLINE,
   VILLAIN_PROFILE_IMAGE,
 } from "@/lib/constants";
+import { COMPANY_NAME, COMPANY_URL } from "@/lib/services";
 import {
   companiesHoverOrder,
   HERO_BADGE_VARIANT,
@@ -105,18 +106,57 @@ export function Villain() {
   return (
     <section
       ref={sectionRef}
-      className="border-border relative overflow-visible border-b bg-gradient-to-b from-surface-muted/35 via-background/55 to-background/80 pt-14 pb-16 sm:pt-20 sm:pb-24 md:pb-28 lg:pt-28 lg:pb-32"
+      className="relative overflow-visible pt-14 pb-16 sm:pt-20 sm:pb-24 lg:pt-28 lg:pb-28"
     >
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden opacity-40 dark:opacity-25"
-        aria-hidden
-      >
-        <div className="bg-villain-glow-primary absolute top-0 -left-1/4 h-96 w-96 rounded-full blur-3xl" />
-        <div className="bg-villain-glow-secondary absolute -right-1/4 bottom-0 h-96 w-96 rounded-full blur-3xl" />
-      </div>
       <Container>
-        <div className="mx-auto max-w-5xl text-center">
-          <div className="mb-5 flex flex-col items-center overflow-visible pt-1">
+        <div className="max-w-4xl">
+          {/* Availability — prominent status pill (primary recruiter signal) */}
+          <div
+            className="relative inline-flex"
+            onPointerEnter={() => setIsOpenToOpportunitiesHovering(true)}
+            onPointerLeave={() => setIsOpenToOpportunitiesHovering(false)}
+          >
+            <span className="border-border bg-background text-foreground inline-flex cursor-default items-center gap-2 rounded-full border px-3.5 py-1.5 font-mono text-xs tracking-wide uppercase">
+              {heroBadgeIsOpen ? (
+                <span className="relative flex size-2 shrink-0" aria-hidden>
+                  <span className="bg-accent absolute inline-flex size-full rounded-full opacity-60 motion-safe:animate-ping" />
+                  <span className="bg-accent relative inline-flex size-2 rounded-full" />
+                </span>
+              ) : (
+                <Sparkle
+                  className="text-accent size-3.5 shrink-0"
+                  weight="fill"
+                  aria-hidden
+                />
+              )}
+              <span>{heroBadgeLabel}</span>
+            </span>
+            <div
+              className={cn(
+                "pointer-events-none absolute top-1/2 left-full z-10 ml-3 flex w-max max-w-[min(calc(100dvw-2rem),16rem)] -translate-y-1/2 flex-col gap-1 transition-opacity duration-200 ease-out",
+                "opacity-0",
+                isOpenToOpportunitiesHovering && "opacity-100",
+              )}
+              role="tooltip"
+              aria-live={isOpenToOpportunitiesHovering ? "polite" : undefined}
+              aria-hidden={!isOpenToOpportunitiesHovering}
+            >
+              {heroBadgeHoverItems.map((label) => (
+                <span key={label} className="inline-flex items-center gap-1.5">
+                  <span
+                    className="bg-accent h-px w-3.5 shrink-0 rounded-full"
+                    aria-hidden
+                  />
+                  <span className="border-border bg-background text-foreground rounded-full border px-2 py-0.5 text-[10px] leading-tight font-medium whitespace-nowrap shadow-sm sm:text-[11px]">
+                    {label}
+                  </span>
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Byline: profile photo (hover Easter egg) */}
+          <div className="mt-6 flex items-center">
             <Link
               href="/contact"
               className="group focus-visible:ring-ring focus-visible:ring-offset-background inline-flex shrink-0 rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
@@ -125,14 +165,14 @@ export function Villain() {
               onPointerLeave={() => setIsProfileHovering(false)}
             >
               <div className="relative shrink-0">
-                <div className="group-hover:outline-accent rounded-full outline outline-2 outline-offset-[6px] outline-transparent transition-[transform,outline-color,outline-style] duration-300 ease-out group-hover:scale-[1.03] group-hover:outline-dashed">
-                  <div className="border-border bg-surface-muted relative size-28 shrink-0 overflow-hidden rounded-full border-2 shadow-md ring-2 ring-black/5 sm:size-32 dark:ring-white/10">
+                <div className="group-hover:outline-accent rounded-full outline-2 outline-offset-4 outline-transparent transition-[transform,outline-color,outline-style] duration-300 ease-out group-hover:scale-[1.03] group-hover:outline-dashed">
+                  <div className="border-border bg-surface-muted relative size-16 shrink-0 overflow-hidden rounded-full border sm:size-20">
                     <Image
                       src={VILLAIN_PROFILE_IMAGE}
                       alt={`${SITE_NAME} profile photo`}
-                      width={400}
-                      height={400}
-                      sizes="(max-width: 640px) 7rem, 8rem"
+                      width={200}
+                      height={200}
+                      sizes="(max-width: 640px) 4rem, 5rem"
                       className="size-full object-cover object-center"
                       priority
                     />
@@ -140,11 +180,7 @@ export function Villain() {
                 </div>
                 <span
                   className={cn(
-                    "border-border bg-background/95 text-foreground pointer-events-none absolute top-0 left-full z-10 ml-2.5 -translate-y-2 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-md backdrop-blur-sm transition-[opacity,margin,transform] duration-200 ease-out sm:ml-3 sm:-translate-y-2.5",
-                    "max-md:-translate-x-6 max-md:ml-2",
-                    isProfileHovering
-                      ? "md:-translate-x-2.5 md:ml-1 lg:ml-0.5"
-                      : "md:-translate-x-4 md:ml-0 lg:-translate-x-5 lg:ml-0",
+                    "border-border bg-background text-foreground pointer-events-none absolute top-1/2 left-full z-10 ml-3 -translate-y-1/2 rounded-full border px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-sm transition-opacity duration-200 ease-out",
                     "opacity-0",
                     showProfileTooltip && "opacity-100",
                   )}
@@ -156,149 +192,63 @@ export function Villain() {
               </div>
             </Link>
           </div>
-          <div
-            className="relative mb-4 inline-flex max-w-full items-center justify-center"
-            onPointerEnter={() => setIsOpenToOpportunitiesHovering(true)}
-            onPointerLeave={() => setIsOpenToOpportunitiesHovering(false)}
-          >
-            <p
-              className={cn(
-                "border-border bg-background/80 text-muted inline-flex max-w-[min(100%,22rem)] cursor-default items-center gap-2 rounded-full border px-3 py-1.5 text-xs leading-snug font-medium shadow-sm backdrop-blur sm:max-w-[28rem]",
-                !heroBadgeIsOpen && "text-balance",
-              )}
+
+          <p className="text-muted mt-6 font-mono text-xs tracking-[0.2em] uppercase sm:mt-8">
+            {SITE_NAME} &mdash; {SITE_TAGLINE}
+          </p>
+          <h1 className="mt-4 text-[clamp(2.5rem,7vw,5rem)] leading-[0.98] font-semibold tracking-[-0.02em] text-balance">
+            {SITE_HEADLINE}
+          </h1>
+          <p className="text-muted mt-6 max-w-xl text-base leading-relaxed sm:text-lg">
+            Full-stack engineer with 3.5+ years shipping production apps used by
+            thousands — across web, mobile, QA, and AI.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <ButtonLink
+              href="/projects"
+              variant="primary"
+              className="w-full sm:w-auto"
             >
-              <Sparkle className="text-accent size-3.5 shrink-0" weight="fill" />
-              <span className="min-w-0 text-left">{heroBadgeLabel}</span>
-            </p>
-            <div
-              className={cn(
-                "pointer-events-none absolute top-1/2 left-full z-10 ml-1.5 flex w-max max-w-[min(calc(100dvw-2rem),16rem)] -translate-y-1/2 flex-col gap-1 transition-opacity duration-200 ease-out",
-                "opacity-0",
-                isOpenToOpportunitiesHovering && "opacity-100",
-              )}
-              role="tooltip"
-              aria-live={isOpenToOpportunitiesHovering ? "polite" : undefined}
-              aria-hidden={!isOpenToOpportunitiesHovering}
+              View my work
+              <ArrowRight className="size-4" weight="bold" aria-hidden />
+            </ButtonLink>
+            <ButtonLink
+              href="/contact"
+              variant="secondary"
+              className="w-full sm:w-auto"
             >
-              {heroBadgeHoverItems.map((label) => (
-                <span
-                  key={label}
-                  className="inline-flex items-center gap-1.5"
-                >
-                  <span
-                    className="bg-accent h-px w-3.5 shrink-0 rounded-full"
-                    aria-hidden
-                  />
-                  <span className="border-border bg-background/95 text-foreground rounded-full border px-2 py-0.5 text-[10px] leading-tight font-medium whitespace-nowrap shadow-sm backdrop-blur-sm sm:text-[11px]">
-                    {label}
-                  </span>
-                </span>
-              ))}
-            </div>
+              Get in touch
+            </ButtonLink>
+            <ButtonLink
+              href={RESUME_DOWNLOAD_HREF}
+              download={RESUME_DOWNLOAD_FILENAME}
+              variant="ghost"
+              className="w-full sm:w-auto"
+            >
+              <DownloadSimple className="size-4" weight="bold" aria-hidden />
+              Résumé
+            </ButtonLink>
           </div>
-          <div>
-            <h1 className="text-foreground text-[clamp(1.875rem,5vw+1rem,3.75rem)] font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-              {SITE_TAGLINE}
-            </h1>
-            <p
-              className="text-muted mx-auto mt-5 w-full max-w-4xl text-base leading-relaxed sm:text-lg md:text-xl md:leading-snug"
+
+          <div className="border-border mt-10 border-t pt-6">
+            <a
+              href={COMPANY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group text-muted hover:text-foreground inline-flex items-center gap-2.5 text-sm transition-colors"
             >
-              {SITE_BIO}
-            </p>
-          </div>
-          <div className="text-foreground mx-auto mt-10 w-full max-w-4xl text-center sm:mt-12 sm:text-left">
-            <div className="grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
-              <div className="text-center">
-                <div className="flex flex-col items-center gap-2">
-                  <Stack
-                    className="text-accent size-8 shrink-0"
-                    weight="duotone"
-                    aria-hidden
-                  />
-                  <h2 className="text-accent text-xs font-semibold tracking-wide">
-                    Skills
-                  </h2>
-                </div>
-                <ul className="mt-3 flex flex-wrap justify-center gap-2">
-                  {HOME_HERO_SKILLS.map((item) => (
-                    <li key={item}>
-                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                  <li>
-                    <Link
-                      href="/skills"
-                      className="border-border text-muted hover:border-accent/50 hover:text-accent bg-background/80 inline-flex size-4 items-center justify-center rounded-full border border-dashed transition-colors"
-                      aria-label="More skills"
-                    >
-                      <Plus className="size-2.5" weight="bold" aria-hidden />
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="text-center">
-                <div className="flex flex-col items-center gap-2">
-                  <Code
-                    className="text-accent size-8 shrink-0"
-                    weight="duotone"
-                    aria-hidden
-                  />
-                  <h2 className="text-accent text-xs font-semibold tracking-wide">
-                    Recent Technology
-                  </h2>
-                </div>
-                <ul className="mt-3 flex flex-wrap justify-center gap-2">
-                  {HOME_HERO_RECENT_TECH.map((item) => (
-                    <li key={item}>
-                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                  <li>
-                    <Link
-                      href="/skills"
-                      className="border-border text-muted hover:border-accent/50 hover:text-accent bg-background/80 inline-flex size-4 items-center justify-center rounded-full border border-dashed transition-colors"
-                      aria-label="More technologies"
-                    >
-                      <Plus className="size-2.5" weight="bold" aria-hidden />
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="text-center">
-                <div className="flex flex-col items-center gap-2">
-                  <FolderOpen
-                    className="text-accent size-8 shrink-0"
-                    weight="duotone"
-                    aria-hidden
-                  />
-                  <h2 className="text-accent text-xs font-semibold tracking-wide">
-                    Projects
-                  </h2>
-                </div>
-                <ul className="mt-3 flex flex-wrap justify-center gap-2">
-                  {HOME_HERO_RECENT_PROJECTS.map((title) => (
-                    <li key={title}>
-                      <span className="border-border bg-background/80 text-foreground inline-block rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm">
-                        {title}
-                      </span>
-                    </li>
-                  ))}
-                  <li>
-                    <Link
-                      href="/projects"
-                      className="border-border text-muted hover:border-accent/50 hover:text-accent bg-background/80 inline-flex size-4 items-center justify-center rounded-full border border-dashed transition-colors"
-                      aria-label="More projects"
-                    >
-                      <Plus className="size-2.5" weight="bold" aria-hidden />
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              <span className="bg-accent size-1.5 rounded-full" aria-hidden />
+              <span className="font-mono text-xs tracking-wide uppercase">
+                Founder
+              </span>
+              <span className="text-foreground font-medium">{COMPANY_NAME}</span>
+              <ArrowUpRight
+                className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                weight="bold"
+                aria-hidden
+              />
+            </a>
           </div>
         </div>
       </Container>
