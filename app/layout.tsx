@@ -50,7 +50,62 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
       suppressHydrationWarning
     >
-      <body className="bg-background text-foreground min-h-full overflow-x-hidden font-sans">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var clean = function(node) {
+                    if (!node || !node.removeAttribute) return;
+                    if (node.hasAttribute('bis_skin_checked')) node.removeAttribute('bis_skin_checked');
+                    if (node.hasAttribute('bis_register')) node.removeAttribute('bis_register');
+                  };
+                  var observer = new MutationObserver(function(mutations) {
+                    for (var i = 0; i < mutations.length; i++) {
+                      var m = mutations[i];
+                      if (m.type === 'attributes') {
+                        if (m.attributeName === 'bis_skin_checked' || m.attributeName === 'bis_register' || (m.attributeName && m.attributeName.indexOf('__processed_') === 0)) {
+                          m.target.removeAttribute(m.attributeName);
+                        }
+                      } else if (m.type === 'childList') {
+                        for (var j = 0; j < m.addedNodes.length; j++) {
+                          var node = m.addedNodes[j];
+                          if (node.nodeType === 1) {
+                            clean(node);
+                            if (node.querySelectorAll) {
+                              var children = node.querySelectorAll('[bis_skin_checked], [bis_register]');
+                              for (var k = 0; k < children.length; k++) clean(children[k]);
+                            }
+                          }
+                        }
+                      }
+                    }
+                  });
+                  observer.observe(document.documentElement, {
+                    attributes: true,
+                    subtree: true,
+                    childList: true,
+                  });
+                  if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', function() {
+                      var all = document.querySelectorAll('[bis_skin_checked], [bis_register]');
+                      for (var i = 0; i < all.length; i++) clean(all[i]);
+                    });
+                  } else {
+                    var all = document.querySelectorAll('[bis_skin_checked], [bis_register]');
+                    for (var i = 0; i < all.length; i++) clean(all[i]);
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body
+        className="bg-background text-foreground min-h-full overflow-x-hidden font-sans"
+        suppressHydrationWarning
+      >
         <ThemeProvider>
           <AppShell>{children}</AppShell>
         </ThemeProvider>

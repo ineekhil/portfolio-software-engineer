@@ -6,7 +6,7 @@
  */
 
 export const COMPANY_NAME = "Code Behind the Scenes" as const;
-export const COMPANY_URL = "https://codebehindthescenes.com" as const;
+export const COMPANY_URL = "https://codebts.com/" as const;
 /** One-liner used under the Services heading. */
 export const COMPANY_TAGLINE =
   "My software studio, building web, mobile, QA, and AI products end to end.";

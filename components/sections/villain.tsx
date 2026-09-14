@@ -193,8 +193,12 @@ export function Villain() {
             </Link>
           </div>
 
-          <p className="text-muted mt-6 font-mono text-xs tracking-[0.2em] uppercase sm:mt-8">
-            {SITE_NAME} &mdash; {SITE_TAGLINE}
+          <p className="mt-6 flex flex-wrap items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase sm:mt-8">
+            <span className="text-foreground font-bold">{SITE_NAME}</span>
+            <span className="text-muted/50" aria-hidden>
+              &mdash;
+            </span>
+            <span className="text-accent font-medium">{SITE_TAGLINE}</span>
           </p>
           <h1 className="mt-4 text-[clamp(2.5rem,7vw,5rem)] leading-[0.98] font-semibold tracking-[-0.02em] text-balance">
             {SITE_HEADLINE}
