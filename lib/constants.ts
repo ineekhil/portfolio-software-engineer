@@ -62,10 +62,10 @@ export const HEADER_SOCIAL_LINKS: SocialLink[] = [
 export const FEATURED_PROJECTS: Project[] = [
   {
     id: "1",
-    title: "Design system starter",
+    title: "Full stack starter",
     description:
-      "Reusable UI primitives and tokens for shipping consistent interfaces faster.",
-    tags: ["React Native", "TypeScript", "Redux"],
+      "End-to-end full-stack application template with modern frontend, robust backend APIs, and database integration.",
+    tags: ["React", "Node.js", "TypeScript", "Express"],
   },
   {
     id: "2",
@@ -113,7 +113,7 @@ export const HOME_HERO_RECENT_TECH = [
 ] as const;
 
 export const HOME_HERO_RECENT_PROJECTS = [
-  "Design system starter",
+  "Full stack starter",
   "Analytics dashboard",
   "API toolkit",
 ] as const;
